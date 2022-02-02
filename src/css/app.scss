@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'AdventureC';
+  src: url('/fonts/adeventure-c-regular/adeventure-c-regular.woff2') format('woff2'),
+    url('/fonts/adeventure-c-regular/adeventure-c-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atziluth';
+  src: url('/fonts/atziluth-script/atziluth-script.woff2') format('woff2'),
+    url('/fonts/atziluth-script/atziluth-script.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beachwood';
+  src: url('/fonts/beachwood-regular/beachwood-regular.woff2') format('woff2'),
+    url('/fonts/beachwood-regular/beachwood-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('/fonts/century-gothic-regular/century-gothic-regular.woff2') format('woff2'),
+    url('/fonts/century-gothic-regular/century-gothic-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Century Gothic Italic';
+  src: url('/fonts/century-gothic-italic/century-gothic-italic.woff2') format('woff2'),
+    url('/fonts/century-gothic-italic/century-gothic-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Light';
+  src: url('/fonts/montserrat-light/montserrat-light.woff2') format('woff2'),
+    url('/fonts/montserrat-light/montserrat-light.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Romul';
+  src: url('/fonts/romul-regular/romul-regular.woff2') format('woff2'),
+    url('/fonts/romul-regular/romul-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Transitions
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// Transparent Background Pattern
+.bg-transparent-pattern {
+  background: url('/images/transparent.svg') repeat;
+
+  &_small {
+    background-size: 10px;
+  }
+}
