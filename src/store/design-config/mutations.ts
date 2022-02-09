@@ -89,6 +89,10 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
     state.background.filename = payload;
   },
 
+  setTextEditor(state, payload: string) {
+    state.textEditor.innerText = payload;
+  },
+
   unsetBackgroundFilename(state) {
     state.background.filename = null;
   },

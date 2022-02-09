@@ -6,6 +6,10 @@
   .starmap-product__bg(
     :style="bgStyleObject"
   )
+  .starmap-product__text(
+    :style="textStyleObject"
+    v-html="textLayout"
+  )
 </template>
 
 <script lang="ts">
@@ -23,8 +27,13 @@ export default defineComponent({
       backgroundPath,
       starsShiftX,
       starsShiftY,
+      textLayout,
       initProduct,
     } = useProduct();
+
+    const textStyleObject = computed(() => ({
+      color: '#000',
+    }));
 
     const bgStyleObject = computed(() => ({
       backgroundImage: backgroundPath.value ? `url(${backgroundPath.value})` : '',
@@ -46,6 +55,8 @@ export default defineComponent({
     return {
       starsStyleObject,
       bgStyleObject,
+      textStyleObject,
+      textLayout,
     };
   },
 });
@@ -83,5 +94,15 @@ export default defineComponent({
     background: no-repeat center;
     background-size: cover;
   }
+  &__text{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 6.04545em;
+    letter-spacing: .00182em;
+  }
+
 }
 </style>

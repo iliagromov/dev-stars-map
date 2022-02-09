@@ -28,6 +28,15 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/unsetBackgroundFilename');
   };
 
+  /** Текст по-умолчанию для макета */
+  const textEditor = computed(
+    () => store.state.designConfig.textEditor.innerText,
+  );
+
+  /** Установка текста для макета */
+  const setTextEditor = async (value: string) => {
+    await store.dispatch('designConfig/setTextEditor', value);
+  };
   /** Сдвиг слоя со звездами по оси X */
   const starsShiftX = computed(
     () => store.state.designConfig.stars.shiftX,
@@ -280,6 +289,8 @@ export default function useStoreDesignConfig() {
     backgroundFilename,
     setBackgroundFilename,
     unsetBackgroundFilename,
+    textEditor,
+    setTextEditor,
     starsShiftX,
     setStarsShiftX,
     starsShiftY,

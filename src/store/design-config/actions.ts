@@ -12,6 +12,10 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setBackgroundFilename', payload);
   },
 
+  setTextEditor({ commit }, payload: string) {
+    commit('setTextEditor', payload);
+  },
+
   unsetBackgroundFilename({ commit }) {
     commit('unsetBackgroundFilename');
   },

@@ -7,6 +7,9 @@ export interface DesignConfigStateInterface {
     filename: string;
   };
 
+  textEditor: {
+    innerText: string
+  }
   /** Параметры слоя с картой звездного неба */
   stars: {
     /** Сдвиг слоя с картой по оси X */
@@ -25,7 +28,9 @@ function state(): DesignConfigStateInterface {
     background: {
       filename: null,
     },
-
+    textEditor: {
+      innerText: 'В этот день <br/> звезды решили за нас. 2',
+    },
     stars: {
       shiftX: null,
       shiftY: null,

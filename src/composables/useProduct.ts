@@ -10,11 +10,14 @@ export default function useProduct() {
 
   const {
     backgroundFilename,
+    textEditor,
     starsShiftX,
     starsShiftY,
     starsCelestial,
     setDefaults,
   } = useStoreDesignConfig();
+
+  const textLayout = computed(() => textEditor.value);
 
   const backgroundPath = computed(() => `/images/backgrounds/${backgroundFilename.value}.svg`);
 
@@ -29,6 +32,7 @@ export default function useProduct() {
   watch(starsCelestial, updateCelestial, { deep: true });
 
   return {
+    textLayout,
     backgroundPath,
     starsShiftX,
     starsShiftY,

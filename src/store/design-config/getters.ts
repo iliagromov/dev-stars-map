@@ -7,6 +7,10 @@ const getters: GetterTree<DesignConfigStateInterface, StateInterface> = {
     return background.filename;
   },
 
+  textEditor({ textEditor }) {
+    return textEditor.innerText;
+  },
+
   shiftX({ stars }) {
     return stars.shiftX;
   },
