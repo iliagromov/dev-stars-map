@@ -29,7 +29,7 @@ function state(): DesignConfigStateInterface {
       filename: null,
     },
     textEditor: {
-      innerText: 'В этот день <br/> звезды решили за нас. 2',
+      innerText: 'В этот день звезды решили за нас',
     },
     stars: {
       shiftX: null,
