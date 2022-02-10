@@ -16,6 +16,26 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setTextEditor', payload);
   },
 
+  setLayoutFieldTextFont({ commit }, payload: string) {
+    commit('setLayoutFieldTextFont', payload);
+  },
+
+  setLayoutFieldTextSize({ commit }, payload: number) {
+    commit('setLayoutFieldTextSize', payload);
+  },
+
+  setLayoutFieldTextColor({ commit }, payload: string) {
+    commit('setLayoutFieldTextColor', payload);
+  },
+
+  setLayoutFieldTextTransformX({ commit }, payload: number) {
+    commit('setLayoutFieldTextTransformX', payload);
+  },
+
+  setLayoutFieldTextTransformY({ commit }, payload: number) {
+    commit('setLayoutFieldTextTransformY', payload);
+  },
+
   unsetBackgroundFilename({ commit }) {
     commit('unsetBackgroundFilename');
   },

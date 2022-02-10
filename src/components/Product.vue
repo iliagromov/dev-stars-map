@@ -1,21 +1,24 @@
 <template lang="pug">
-.starmap-product.layout5
+.starmap-product
   #celestial-map.starmap-product__stars(
     :style="starsStyleObject"
   )
   .starmap-product__bg(
     :style="bgStyleObject"
   )
-  .starmap-product__title(v-html="textLayout")
+  .starmap-product__layout-field-text(
+    v-html="textLayout"
+    :style="layoutFieldStyleObject"
+    )
   .starmap-product__subtitle ты - мой повод быть лучше
   .starmap-product__date 8 Февраля 2022
   .starmap-product__place Россия, Москва
-  .starmap-product__name
-    .starmap-product__name-value руслан
-    .starmap-product__name-date 11.09.1989
-  .starmap-product__name
-    .starmap-product__name-value людмила
-    .starmap-product__name-date 11.09.1989
+  //- .starmap-product__name.name1
+  //-   .starmap-product__name-value руслан
+  //-   .starmap-product__name-date 11.09.1989
+  //- .starmap-product__name.name2
+  //-   .starmap-product__name-value людмила
+  //-   .starmap-product__name-date 11.09.1989
 </template>
 
 <script lang="ts">
@@ -33,14 +36,23 @@ export default defineComponent({
       backgroundPath,
       starsShiftX,
       starsShiftY,
-      textLayout,
+      textEditor,
+      layoutFieldTextFont,
+      layoutFieldTextSize,
+      layoutFieldTextColor,
+      layoutFieldTextTransformX,
+      layoutFieldTextTransformY,
       initProduct,
     } = useProduct();
 
-    const textStyleObject = computed(() => ({
-      color: '#000',
-    }));
+    const textLayout = computed(() => textEditor.value);
 
+    const layoutFieldStyleObject = computed(() => ({
+      color: layoutFieldTextColor.value ? layoutFieldTextColor.value : '#000',
+      'font-family': layoutFieldTextFont.value,
+      'font-size': `${layoutFieldTextSize.value}em`,
+      transform: `translate3d(calc(0% + ${layoutFieldTextTransformX.value}px), calc(0% + ${layoutFieldTextTransformY.value}px), 0)`,
+    }));
     const bgStyleObject = computed(() => ({
       backgroundImage: backgroundPath.value ? `url(${backgroundPath.value})` : '',
     }));
@@ -62,8 +74,8 @@ export default defineComponent({
     return {
       starsStyleObject,
       bgStyleObject,
-      textStyleObject,
       textLayout,
+      layoutFieldStyleObject,
     };
   },
 });
@@ -105,17 +117,20 @@ export default defineComponent({
     font-size: 6.04545em;
     letter-spacing: .00182em;
   }
+  &__layout-field-text{
+    position: relative;
+    color: #000;
+    width: 100%;
+    font-size: 9em;
+  }
   &__title,
   &__subtitle,
   &__date,
   &__place,
   &__name{
-    position: absolute;
-    text-align: center;
-    color: #000;
-    width: 100%;
-    left: 50%;
-    transform: translate(-50%, 0);
+    // text-align: center;
+    // left: 50%;
+    // transform: translate(-50%, 0);
   }
 
   &__date,
@@ -128,7 +143,6 @@ export default defineComponent({
 
   &__title{
     font-size: 9em;
-    bottom: 23%;
   }
 
   &__subtitle{
@@ -249,11 +263,13 @@ export default defineComponent({
 // FIXME:
 .starmap-product{
   &__name{
-      &:first-child{
-        top: 45%
+      &.name1{
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0px);
       }
-      &:last-child{
-        top: 80%
+      &.name2{
+        top: 87%;
+        transform: translate(-50%, -87%, 0px);
       }
   }
 }

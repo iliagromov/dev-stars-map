@@ -7,8 +7,18 @@ export interface DesignConfigStateInterface {
     filename: string;
   };
 
+  layoutFieldsText: Array<object>,
+
   textEditor: {
-    innerText: string
+    innerText: string;
+    // FIXME: Сделать по типу CSSStyleDeclaration
+    styles: {
+      font: string,
+      size: number,
+      color: string,
+      transformX: number,
+      transformY: number,
+    }
   }
   /** Параметры слоя с картой звездного неба */
   stars: {
@@ -28,8 +38,27 @@ function state(): DesignConfigStateInterface {
     background: {
       filename: null,
     },
+    layoutFieldsText: [
+      {
+        innerText: 'В этот день звезды решили за нас',
+        styles: {
+          font: null,
+          size: null,
+          color: null,
+          transformX: null,
+          transformY: null,
+        },
+      },
+    ],
     textEditor: {
       innerText: 'В этот день звезды решили за нас',
+      styles: {
+        font: null,
+        size: null,
+        color: null,
+        transformX: null,
+        transformY: null,
+      },
     },
     stars: {
       shiftX: null,

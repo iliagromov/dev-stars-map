@@ -37,6 +37,67 @@ export default function useStoreDesignConfig() {
   const setTextEditor = async (value: string) => {
     await store.dispatch('designConfig/setTextEditor', value);
   };
+
+  /** Текстовое поле: Названия: Стили: Шрифт */
+  const layoutFieldTextFont = computed(
+    () => store.state.designConfig.textEditor.styles.font,
+  );
+
+  /** Установка семейства шрифта для Текстового поля */
+  const setLayoutFieldTextFont = async (
+    value: string,
+  ) => {
+    await store.dispatch('designConfig/setLayoutFieldTextFont', value);
+  };
+
+  /** Текстовое поле: Названия: Стили: Размер */
+  const layoutFieldTextSize = computed(
+    () => store.state.designConfig.textEditor.styles.size,
+  );
+
+  /** Установка размера шрифта для Текстового поля */
+  const setLayoutFieldTextSize = async (
+    value: number,
+  ) => {
+    await store.dispatch('designConfig/setLayoutFieldTextSize', value);
+  };
+
+  /** Текстовое поле: Названия: Стили: Цвет */
+  const layoutFieldTextColor = computed(
+    () => store.state.designConfig.textEditor.styles.color,
+  );
+
+  /** Установка цвета шрифта для Текстового поля */
+  const setLayoutFieldTextColor = async (
+    value: string,
+  ) => {
+    await store.dispatch('designConfig/setLayoutFieldTextColor', value);
+  };
+
+  /** Текстовое поле: Названия: Стили: transform X */
+  const layoutFieldTextTransformX = computed(
+    () => store.state.designConfig.textEditor.styles.transformX,
+  );
+
+  /** Установка координаты X шрифта для Текстового поля */
+  const setLayoutFieldTextTransformX = async (
+    value: number,
+  ) => {
+    await store.dispatch('designConfig/setLayoutFieldTextTransformX', value);
+  };
+
+  /** Текстовое поле: Названия: Стили: transform Y */
+  const layoutFieldTextTransformY = computed(
+    () => store.state.designConfig.textEditor.styles.transformY,
+  );
+
+  /** Установка transform Y шрифта для Текстового поля */
+  const setLayoutFieldTextTransformY = async (
+    value: number,
+  ) => {
+    await store.dispatch('designConfig/setLayoutFieldTextTransformY', value);
+  };
+
   /** Сдвиг слоя со звездами по оси X */
   const starsShiftX = computed(
     () => store.state.designConfig.stars.shiftX,
@@ -291,6 +352,16 @@ export default function useStoreDesignConfig() {
     unsetBackgroundFilename,
     textEditor,
     setTextEditor,
+    layoutFieldTextFont,
+    setLayoutFieldTextFont,
+    layoutFieldTextSize,
+    setLayoutFieldTextSize,
+    layoutFieldTextColor,
+    setLayoutFieldTextColor,
+    layoutFieldTextTransformX,
+    setLayoutFieldTextTransformX,
+    layoutFieldTextTransformY,
+    setLayoutFieldTextTransformY,
     starsShiftX,
     setStarsShiftX,
     starsShiftY,

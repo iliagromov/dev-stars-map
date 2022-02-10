@@ -93,6 +93,26 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
     state.textEditor.innerText = payload;
   },
 
+  setLayoutFieldTextFont(state, payload: string) {
+    state.textEditor.styles.font = payload;
+  },
+
+  setLayoutFieldTextSize(state, payload: number) {
+    state.textEditor.styles.size = payload;
+  },
+
+  setLayoutFieldTextColor(state, payload: string) {
+    state.textEditor.styles.color = payload;
+  },
+
+  setLayoutFieldTextTransformX(state, payload: number) {
+    state.textEditor.styles.transformX = payload;
+  },
+
+  setLayoutFieldTextTransformY(state, payload: number) {
+    state.textEditor.styles.transformY = payload;
+  },
+
   unsetBackgroundFilename(state) {
     state.background.filename = null;
   },
