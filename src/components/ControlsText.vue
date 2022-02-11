@@ -1,60 +1,18 @@
 <template lang="pug">
-q-card
-  q-card-section
-    .row.q-col-gutter-md.q-mb-lg
-      .col-12
-        .text-overline.text-uppercase.text-blue-grey-5 Text
-      .col-4
-        q-input(
-          v-model.text="modelTextEditor"
-          debounce="500"
-          label="Текст"
-        )
-      .col-4
-        q-select(
-          v-model="modelTextEditorStyleFontFamily"
-          :options="optionsModelTextEditorStyleFontFamily"
-          label="Шрифт"
-        )
-      .col-4
-        q-input(
-          v-model.number="modelLayoutFieldTextStyleSize"
-          type="number"
-          label="Размер"
-        )
-      .col-4
-        q-input(
-          v-model="modelLayoutFieldTextStyleColor"
-          debounce="500"
-          label="Цвет"
-        )
-          template(v-slot:append)
-            q-icon(
-              name="colorize"
-              class="cursor-pointer"
-            )
-              q-popup-proxy(
-                transition-show="scale"
-                transition-hide="scale"
-                cover
-              )
-                q-color(v-model="modelLayoutFieldTextStyleColor")
+.row.q-mb-lg
+  q-btn(
+    color="primary"
+    label="Добавить поле"
+    @click="onAddLayoutField"
+    )
+  q-btn(
+    color="red"
+    label="Убрать поле"
+    @click="onRemoveLayoutField"
+    )
+div(v-for="field in layoutFields")
+  controls-fields
 
-      .col-4
-        q-input(
-          v-model.number="modelLayoutFieldTextStyleTransformX"
-          type="number"
-          debounce="500"
-          label="Сдвиг текста по оси X"
-        )
-
-      .col-4
-        q-input(
-          v-model.number="modelLayoutFieldTextStyleTransformY"
-          type="number"
-          debounce="500"
-          label="Сдвиг текста по оси Y"
-        )
 </template>
 
 <script lang="ts">
@@ -64,8 +22,15 @@ import { defineComponent } from 'vue';
 // Composables
 import useControlsText from 'src/composables/useControlsText';
 
+// Components
+import ControlsFields from 'components/ControlsFields.vue';
+
 export default defineComponent({
   name: 'ControlsText',
+
+  components: {
+    ControlsFields,
+  },
 
   setup() {
     return {

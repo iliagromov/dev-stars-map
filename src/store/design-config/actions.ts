@@ -8,8 +8,20 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setDefaultStars');
   },
 
+  setDefaultLayoutField({ commit }) {
+    commit('setDefaultLayoutField');
+  },
+
+  unsetDefaultLayoutField({ commit }) {
+    commit('unsetDefaultLayoutField');
+  },
+
   setBackgroundFilename({ commit }, payload: number) {
     commit('setBackgroundFilename', payload);
+  },
+
+  setLayoutFields({ commit }, payload: object) {
+    commit('setLayoutFields', payload);
   },
 
   setTextEditor({ commit }, payload: string) {

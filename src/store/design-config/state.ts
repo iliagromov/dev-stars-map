@@ -39,16 +39,6 @@ function state(): DesignConfigStateInterface {
       filename: null,
     },
     layoutFieldsText: [
-      {
-        innerText: 'В этот день звезды решили за нас',
-        styles: {
-          font: null,
-          size: null,
-          color: null,
-          transformX: null,
-          transformY: null,
-        },
-      },
     ],
     textEditor: {
       innerText: 'В этот день звезды решили за нас',

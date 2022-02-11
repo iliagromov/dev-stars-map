@@ -28,6 +28,24 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/unsetBackgroundFilename');
   };
 
+  const setDefaultLayoutField = async () => {
+    await store.dispatch('designConfig/setDefaultLayoutField');
+  };
+
+  const unsetDefaultLayoutField = async () => {
+    await store.dispatch('designConfig/unsetDefaultLayoutField');
+  };
+
+  /** Текстовые поля для макета */
+  const layoutFields = computed(
+    () => store.state.designConfig.layoutFieldsText,
+  );
+
+  /** Установка текстового поля для макета */
+  const setLayoutFields = async (value: object) => {
+    await store.dispatch('designConfig/setLayoutFields', value);
+  };
+
   /** Текст по-умолчанию для макета */
   const textEditor = computed(
     () => store.state.designConfig.textEditor.innerText,
@@ -347,9 +365,13 @@ export default function useStoreDesignConfig() {
 
   return {
     setDefaults,
+    setDefaultLayoutField,
+    unsetDefaultLayoutField,
     backgroundFilename,
     setBackgroundFilename,
     unsetBackgroundFilename,
+    layoutFields,
+    setLayoutFields,
     textEditor,
     setTextEditor,
     layoutFieldTextFont,

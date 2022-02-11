@@ -7,8 +7,32 @@ const getters: GetterTree<DesignConfigStateInterface, StateInterface> = {
     return background.filename;
   },
 
+  layoutFields({ layoutFieldsText }) {
+    return layoutFieldsText;
+  },
+
   textEditor({ textEditor }) {
     return textEditor.innerText;
+  },
+
+  layoutFieldTextFont({ textEditor }) {
+    return textEditor.styles.font;
+  },
+
+  layoutFieldTextSize({ textEditor }) {
+    return textEditor.styles.size;
+  },
+
+  layoutFieldTextColor({ textEditor }) {
+    return textEditor.styles.color;
+  },
+
+  layoutFieldTextTransformX({ textEditor }) {
+    return textEditor.styles.transformX;
+  },
+
+  layoutFieldTextTransformY({ textEditor }) {
+    return textEditor.styles.transformX;
   },
 
   shiftX({ stars }) {

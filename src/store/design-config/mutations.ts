@@ -85,8 +85,29 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
     };
   },
 
+  setDefaultLayoutField(state) {
+    state.layoutFieldsText.push({
+      innerText: 'В этот день звезды решили за нас',
+      styles: {
+        font: 'AdventureC',
+        size: 5,
+        color: '#000',
+        transformX: 0,
+        transformY: 0,
+      },
+    });
+  },
+
+  unsetDefaultLayoutField(state) {
+    state.layoutFieldsText.pop();
+  },
+
   setBackgroundFilename(state, payload: string) {
     state.background.filename = payload;
+  },
+
+  setLayoutFieldsText(state, payload: object[]) {
+    state.layoutFieldsText = payload;
   },
 
   setTextEditor(state, payload: string) {
