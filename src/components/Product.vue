@@ -6,13 +6,16 @@
   .starmap-product__bg(
     :style="bgStyleObject"
   )
-  .starmap-product__layout-field-text(
-    v-html="textLayout"
-    :style="layoutFieldStyleObject"
-    )
-  .starmap-product__subtitle ты - мой повод быть лучше
-  .starmap-product__date 8 Февраля 2022
-  .starmap-product__place Россия, Москва
+  template(v-for="(field, index) in layoutFieldsText")
+    .starmap-product__layout-field-text(
+      v-html="field.innerText"
+      :style="{transform: `translate3d(${fontTransformsX[index]}, ${fontTransformsY[index]}, 0px)`}"
+      :style.color="fontColors[index]"
+      :style.size="fontSizes[index]"
+      )
+  //-.starmap-product__subtitle ты - мой повод быть лучше
+  //-.starmap-product__date 8 Февраля 2022
+  //-.starmap-product__place Россия, Москва
   //- .starmap-product__name.name1
   //-   .starmap-product__name-value руслан
   //-   .starmap-product__name-date 11.09.1989
@@ -33,26 +36,33 @@ export default defineComponent({
 
   setup() {
     const {
-      backgroundPath,
-      starsShiftX,
-      starsShiftY,
-      textEditor,
-      layoutFieldTextFont,
+      layoutFieldsText,
       layoutFieldTextSize,
       layoutFieldTextColor,
       layoutFieldTextTransformX,
       layoutFieldTextTransformY,
+      backgroundPath,
+      starsShiftX,
+      starsShiftY,
       initProduct,
     } = useProduct();
 
-    const textLayout = computed(() => textEditor.value);
-
-    const layoutFieldStyleObject = computed(() => ({
-      color: layoutFieldTextColor.value ? layoutFieldTextColor.value : '#000',
-      'font-family': layoutFieldTextFont.value,
-      'font-size': `${layoutFieldTextSize.value}em`,
-      transform: `translate3d(calc(0% + ${layoutFieldTextTransformX.value}px), calc(0% + ${layoutFieldTextTransformY.value}px), 0)`,
-    }));
+    // const layoutFieldStyleObject = computed(() => ({
+    //   color: layoutFieldTextColor.value,
+    //   'font-family': layoutFieldTextFont.value,
+    //   'font-size': `${layoutFieldTextSize.value}em`,
+    //   transform: `translate3d(calc(0% + ${layoutFieldTextTransformX.value}px),
+    // calc(0% + ${layoutFieldTextTransformY.value}px), 0)`,
+    // }));
+    const fontSizes = computed(() => layoutFieldTextSize.value.map((size) => ({ 'font-size': `${size.styles.size}em` })));
+    const fontColors = computed(() => layoutFieldTextColor.value.map((c) => (
+      `color: ${c.styles.color}`)));
+    const fontTransformsX = computed(() => layoutFieldTextTransformX.value.map((t) => (
+      `${t.styles.transformX}px`
+    )));
+    const fontTransformsY = computed(() => layoutFieldTextTransformY.value.map((t) => (
+      `${t.styles.transformY}px`
+    )));
     const bgStyleObject = computed(() => ({
       backgroundImage: backgroundPath.value ? `url(${backgroundPath.value})` : '',
     }));
@@ -72,10 +82,13 @@ export default defineComponent({
     });
 
     return {
+      layoutFieldsText,
+      fontSizes,
+      fontColors,
+      fontTransformsX,
+      fontTransformsY,
       starsStyleObject,
       bgStyleObject,
-      textLayout,
-      layoutFieldStyleObject,
     };
   },
 });

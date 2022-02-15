@@ -35,11 +35,11 @@ export default function useControlsBackground() {
   });
 
   /** Выбор фона */
-  const selectBackground = async (bg: Background) => {
-    if (bg.active) {
+  const selectBackground = async (bg2: Background) => {
+    if (bg2.active) {
       await unsetBackgroundFilename();
     } else {
-      await setBackgroundFilename(bg.filename);
+      await setBackgroundFilename(bg2.filename);
     }
   };
 

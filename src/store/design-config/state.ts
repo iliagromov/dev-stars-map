@@ -1,4 +1,5 @@
 import { CelestialConfig } from 'd3-celestial/celestial';
+import { LayoutFieldsText, LayoutFieldText } from '../../types';
 
 export interface DesignConfigStateInterface {
   /** Параметры слоя фона-трафарета */
@@ -7,19 +8,9 @@ export interface DesignConfigStateInterface {
     filename: string;
   };
 
-  layoutFieldsText: Array<object>,
+  layoutFieldsText: LayoutFieldsText,
 
-  textEditor: {
-    innerText: string;
-    // FIXME: Сделать по типу CSSStyleDeclaration
-    styles: {
-      font: string,
-      size: number,
-      color: string,
-      transformX: number,
-      transformY: number,
-    }
-  }
+  textEditor: LayoutFieldText,
   /** Параметры слоя с картой звездного неба */
   stars: {
     /** Сдвиг слоя с картой по оси X */
@@ -39,8 +30,20 @@ function state(): DesignConfigStateInterface {
       filename: null,
     },
     layoutFieldsText: [
+      {
+        id: 0,
+        innerText: 'test',
+        styles: {
+          font: 'AdventureC',
+          size: 5,
+          color: '#000',
+          transformX: 0,
+          transformY: 0,
+        },
+      },
     ],
     textEditor: {
+      id: 0,
       innerText: 'В этот день звезды решили за нас',
       styles: {
         font: null,

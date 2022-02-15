@@ -10,7 +10,7 @@ export default function useProduct() {
 
   const {
     backgroundFilename,
-    textEditor,
+    layoutFieldsText,
     layoutFieldTextFont,
     layoutFieldTextSize,
     layoutFieldTextColor,
@@ -35,7 +35,7 @@ export default function useProduct() {
   watch(starsCelestial, updateCelestial, { deep: true });
 
   return {
-    textEditor,
+    layoutFieldsText,
     layoutFieldTextFont,
     layoutFieldTextSize,
     layoutFieldTextColor,

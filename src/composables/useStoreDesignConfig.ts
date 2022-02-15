@@ -28,90 +28,93 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/unsetBackgroundFilename');
   };
 
+  /** Установка поля текста по-умолчанию */
   const setDefaultLayoutField = async () => {
     await store.dispatch('designConfig/setDefaultLayoutField');
   };
 
+  /** Удаление последнего текстового поля */
   const unsetDefaultLayoutField = async () => {
     await store.dispatch('designConfig/unsetDefaultLayoutField');
   };
 
   /** Текстовые поля для макета */
-  const layoutFields = computed(
+  const layoutFieldsText = computed(
     () => store.state.designConfig.layoutFieldsText,
   );
 
   /** Установка текстового поля для макета */
-  const setLayoutFields = async (value: object) => {
-    await store.dispatch('designConfig/setLayoutFields', value);
+  const setLayoutField = async (value: object) => {
+    await store.dispatch('designConfig/setLayoutField', value);
   };
 
   /** Текст по-умолчанию для макета */
-  const textEditor = computed(
-    () => store.state.designConfig.textEditor.innerText,
+  const layoutFieldText = computed(
+    // () => store.state.designConfig.textEditor.innerText,
+    () => store.state.designConfig.layoutFieldsText[0].innerText,
   );
 
   /** Установка текста для макета */
-  const setTextEditor = async (value: string) => {
-    await store.dispatch('designConfig/setTextEditor', value);
+  const setLayoutFieldText = async (value: object) => {
+    await store.dispatch('designConfig/setLayoutFieldText', value);
   };
 
   /** Текстовое поле: Названия: Стили: Шрифт */
   const layoutFieldTextFont = computed(
-    () => store.state.designConfig.textEditor.styles.font,
+    () => store.state.designConfig.layoutFieldsText,
   );
 
   /** Установка семейства шрифта для Текстового поля */
   const setLayoutFieldTextFont = async (
-    value: string,
+    value: object,
   ) => {
     await store.dispatch('designConfig/setLayoutFieldTextFont', value);
   };
 
   /** Текстовое поле: Названия: Стили: Размер */
   const layoutFieldTextSize = computed(
-    () => store.state.designConfig.textEditor.styles.size,
+    () => store.state.designConfig.layoutFieldsText,
   );
 
   /** Установка размера шрифта для Текстового поля */
   const setLayoutFieldTextSize = async (
-    value: number,
+    value: object,
   ) => {
     await store.dispatch('designConfig/setLayoutFieldTextSize', value);
   };
 
   /** Текстовое поле: Названия: Стили: Цвет */
   const layoutFieldTextColor = computed(
-    () => store.state.designConfig.textEditor.styles.color,
+    () => store.state.designConfig.layoutFieldsText,
   );
 
   /** Установка цвета шрифта для Текстового поля */
   const setLayoutFieldTextColor = async (
-    value: string,
+    value: object,
   ) => {
     await store.dispatch('designConfig/setLayoutFieldTextColor', value);
   };
 
   /** Текстовое поле: Названия: Стили: transform X */
   const layoutFieldTextTransformX = computed(
-    () => store.state.designConfig.textEditor.styles.transformX,
+    () => store.state.designConfig.layoutFieldsText,
   );
 
   /** Установка координаты X шрифта для Текстового поля */
   const setLayoutFieldTextTransformX = async (
-    value: number,
+    value: object,
   ) => {
     await store.dispatch('designConfig/setLayoutFieldTextTransformX', value);
   };
 
   /** Текстовое поле: Названия: Стили: transform Y */
   const layoutFieldTextTransformY = computed(
-    () => store.state.designConfig.textEditor.styles.transformY,
+    () => store.state.designConfig.layoutFieldsText,
   );
 
   /** Установка transform Y шрифта для Текстового поля */
   const setLayoutFieldTextTransformY = async (
-    value: number,
+    value: object,
   ) => {
     await store.dispatch('designConfig/setLayoutFieldTextTransformY', value);
   };
@@ -370,10 +373,12 @@ export default function useStoreDesignConfig() {
     backgroundFilename,
     setBackgroundFilename,
     unsetBackgroundFilename,
-    layoutFields,
-    setLayoutFields,
-    textEditor,
-    setTextEditor,
+
+    layoutFieldsText,
+    setLayoutField,
+
+    layoutFieldText,
+    setLayoutFieldText,
     layoutFieldTextFont,
     setLayoutFieldTextFont,
     layoutFieldTextSize,
@@ -384,6 +389,7 @@ export default function useStoreDesignConfig() {
     setLayoutFieldTextTransformX,
     layoutFieldTextTransformY,
     setLayoutFieldTextTransformY,
+
     starsShiftX,
     setStarsShiftX,
     starsShiftY,

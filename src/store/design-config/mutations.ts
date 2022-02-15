@@ -2,6 +2,7 @@ import { CelestialConfig } from 'd3-celestial/celestial';
 import { MutationTree } from 'vuex';
 import { FONTS_LIST } from 'src/config';
 import { DesignConfigStateInterface } from './state';
+import { LayoutFieldText } from '../../types';
 
 const mutation: MutationTree<DesignConfigStateInterface> = {
   setDefaultStars(state) {
@@ -86,7 +87,10 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
   },
 
   setDefaultLayoutField(state) {
+    // const index = state.layoutFieldsText.length;
+    const index = 1 + Math.max(0, ...state.layoutFieldsText.map((n:LayoutFieldText) => n.id));
     state.layoutFieldsText.push({
+      id: index,
       innerText: 'В этот день звезды решили за нас',
       styles: {
         font: 'AdventureC',
@@ -106,20 +110,44 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
     state.background.filename = payload;
   },
 
-  setLayoutFieldsText(state, payload: object[]) {
-    state.layoutFieldsText = payload;
+  setLayoutField(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id] = payload;
+    // state.layoutFieldsText[payload.id].styles = payload.styles;
   },
 
-  setTextEditor(state, payload: string) {
-    state.textEditor.innerText = payload;
+  setLayoutFieldText(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].innerText = payload.innerText;
   },
 
-  setLayoutFieldTextFont(state, payload: string) {
-    state.textEditor.styles.font = payload;
+  setLayoutFieldTextSize(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].styles.size = payload.styles.size;
   },
 
-  setLayoutFieldTextSize(state, payload: number) {
-    state.textEditor.styles.size = payload;
+  setLayoutFieldTextColor(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].styles.color = payload.styles.color;
+  },
+
+  setLayoutFieldTextTransformX(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].styles.transformX = payload.styles.transformX;
+  },
+
+  setLayoutFieldTextTransformY(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].styles.transformY = payload.styles.transformY;
+  },
+
+  /*
+  setTextEditor(state, payload: LayoutFieldText) {
+    // state.textEditor.innerText = payload;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    state.layoutFieldsText[payload.id].innerText = payload.innerText;
+  },
+
+  setLayoutFieldTextFont(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].styles.font = payload.styles.font;
+  },
+
+  setLayoutFieldTextSize(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].styles.size = payload.styles.size;
   },
 
   setLayoutFieldTextColor(state, payload: string) {
@@ -133,6 +161,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
   setLayoutFieldTextTransformY(state, payload: number) {
     state.textEditor.styles.transformY = payload;
   },
+  */
 
   unsetBackgroundFilename(state) {
     state.background.filename = null;
