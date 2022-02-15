@@ -1,5 +1,5 @@
 // Vendor
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 // Config
 import { FONTS_LIST } from 'src/config';
@@ -20,11 +20,11 @@ export default function useControlsText() {
     setLayoutFieldTextTransformX,
     layoutFieldTextTransformY,
     setLayoutFieldTextTransformY,
+    layoutFieldTextFont,
+    setLayoutFieldTextFont,
     layoutFieldsText,
     setDefaultLayoutField,
     unsetDefaultLayoutField,
-    setLayoutField,
-    setLayoutFieldTextFont,
   } = useStoreDesignConfig();
 
   /** Добавить новое поле */
@@ -48,76 +48,61 @@ export default function useControlsText() {
 
   /** Семейство Шрифтов для текстового поля  */
   const modelTextEditorStyleFontFamily = ref<LayoutFieldsText>(null);
-  // modelTextEditorStyleFontFamily.value = layoutFieldsText.value.map((field: LayoutFieldText) => (
-  //   field.styles.font
-  // ));
+  modelTextEditorStyleFontFamily.value = layoutFieldsText.value.map((field) => field);
+
   const optionsModelTextEditorStyleFontFamily = FONTS_LIST;
 
-  watch(modelTextEditorStyleFontFamily, setLayoutFieldTextFont);
-
   const changeFieldFont = async (value: string, index: number) => {
-    const obj = Object.assign(layoutFieldsText, {
+    await setLayoutFieldTextFont({
       id: index,
       styles: {
         font: value,
       },
     });
-    // получать предыдущий объект
-    // переписывать стейт
-    await setLayoutField(obj);
   };
 
   /** Размер шрифта для текстового поля */
   const changeFieldSize = async (value: number, index: number) => {
-    const obj = {
+    await setLayoutFieldTextSize({
       id: index,
       styles: {
         size: +value,
       },
-    };
-
-    await setLayoutFieldTextSize(obj);
+    });
   };
   /** Цвет текста для текстового поля */
   const changeFieldColor = async (value: string, index: number) => {
-    const obj = {
+    await setLayoutFieldTextColor({
       id: index,
       styles: {
         color: value,
       },
-    };
-
-    await setLayoutFieldTextColor(obj);
+    });
   };
   /** Координата transformX для текстового поля */
 
   const changeFieldTransformX = async (value: number, index: number) => {
-    const obj = {
+    await setLayoutFieldTextTransformX({
       id: index,
       styles: {
         transformX: +value,
       },
-    };
-
-    await setLayoutFieldTextTransformX(obj);
+    });
   };
 
   /** Координата transformY для текстового поля */
 
   const changeFieldTransformY = async (value: number, index: number) => {
-    const obj = {
+    await setLayoutFieldTextTransformY({
       id: index,
       styles: {
         transformY: +value,
       },
-    };
-
-    await setLayoutFieldTextTransformY(obj);
+    });
   };
 
-  /** Изменение конкретного массива */
-
   return {
+    layoutFieldsText,
     layoutFieldText,
     changeFieldText,
     layoutFieldTextSize,
@@ -128,10 +113,10 @@ export default function useControlsText() {
     changeFieldTransformX,
     layoutFieldTextTransformY,
     changeFieldTransformY,
+    layoutFieldTextFont,
 
     modelTextEditorStyleFontFamily,
     optionsModelTextEditorStyleFontFamily,
-    layoutFieldsText,
 
     changeFieldFont,
 

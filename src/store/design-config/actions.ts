@@ -28,7 +28,7 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setLayoutFieldText', payload);
   },
 
-  setLayoutFieldTextFont({ commit }, payload: string) {
+  setLayoutFieldTextFont({ commit }, payload: object) {
     commit('setLayoutFieldTextFont', payload);
   },
 

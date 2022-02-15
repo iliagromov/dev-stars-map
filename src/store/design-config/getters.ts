@@ -27,12 +27,12 @@ const getters: GetterTree<DesignConfigStateInterface, StateInterface> = {
     return layoutFieldsText;
   },
 
-  layoutFieldTextTransformY({ textEditor }) {
-    return textEditor.styles.transformX;
+  layoutFieldTextTransformY({ layoutFieldsText }) {
+    return layoutFieldsText;
   },
 
-  layoutFieldTextFont({ textEditor }) {
-    return textEditor.styles.font;
+  layoutFieldTextFont({ layoutFieldsText }) {
+    return layoutFieldsText;
   },
 
   shiftX({ stars }) {

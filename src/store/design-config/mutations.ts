@@ -135,6 +135,10 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
     state.layoutFieldsText[payload.id].styles.transformY = payload.styles.transformY;
   },
 
+  setLayoutFieldTextFont(state, payload: LayoutFieldText) {
+    state.layoutFieldsText[payload.id].styles.font = payload.styles.font;
+  },
+
   /*
   setTextEditor(state, payload: LayoutFieldText) {
     // state.textEditor.innerText = payload;

@@ -10,7 +10,6 @@
     label="Убрать поле"
     @click="onRemoveLayoutField"
     )
-<pre>{{ layoutFieldsText }}</pre>
 div(v-for="(field, index) in layoutFieldsText"
     :key="field.id"
     @delete="layoutFieldsText.splice(index, 1)"
@@ -29,10 +28,8 @@ div(v-for="(field, index) in layoutFieldsText"
           )
         .col-4
           q-select(
-            v-model="modelTextEditorStyleFontFamily"
             :options="optionsModelTextEditorStyleFontFamily"
             label="Шрифт"
-            :value="modelTextEditorStyleFontFamily"
             @change="changeFieldFont($event, index)"
           )
         .col-4
