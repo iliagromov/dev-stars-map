@@ -23,14 +23,6 @@ const getters: GetterTree<DesignConfigStateInterface, StateInterface> = {
     return layoutFieldsText;
   },
 
-  layoutFieldTextTransformX({ layoutFieldsText }) {
-    return layoutFieldsText;
-  },
-
-  layoutFieldTextTransformY({ layoutFieldsText }) {
-    return layoutFieldsText;
-  },
-
   layoutFieldTextFont({ layoutFieldsText }) {
     return layoutFieldsText;
   },

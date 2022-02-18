@@ -95,30 +95,6 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/setLayoutFieldTextColor', value);
   };
 
-  /** Текстовое поле: Названия: Стили: transform X */
-  const layoutFieldTextTransformX = computed(
-    () => store.state.designConfig.layoutFieldsText,
-  );
-
-  /** Установка координаты X шрифта для Текстового поля */
-  const setLayoutFieldTextTransformX = async (
-    value: object,
-  ) => {
-    await store.dispatch('designConfig/setLayoutFieldTextTransformX', value);
-  };
-
-  /** Текстовое поле: Названия: Стили: transform Y */
-  const layoutFieldTextTransformY = computed(
-    () => store.state.designConfig.layoutFieldsText,
-  );
-
-  /** Установка transform Y шрифта для Текстового поля */
-  const setLayoutFieldTextTransformY = async (
-    value: object,
-  ) => {
-    await store.dispatch('designConfig/setLayoutFieldTextTransformY', value);
-  };
-
   /** Сдвиг слоя со звездами по оси X */
   const starsShiftX = computed(
     () => store.state.designConfig.stars.shiftX,
@@ -385,10 +361,6 @@ export default function useStoreDesignConfig() {
     setLayoutFieldTextSize,
     layoutFieldTextColor,
     setLayoutFieldTextColor,
-    layoutFieldTextTransformX,
-    setLayoutFieldTextTransformX,
-    layoutFieldTextTransformY,
-    setLayoutFieldTextTransformY,
 
     starsShiftX,
     setStarsShiftX,

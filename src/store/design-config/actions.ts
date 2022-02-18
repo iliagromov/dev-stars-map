@@ -40,14 +40,6 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setLayoutFieldTextColor', payload);
   },
 
-  setLayoutFieldTextTransformX({ commit }, payload: object) {
-    commit('setLayoutFieldTextTransformX', payload);
-  },
-
-  setLayoutFieldTextTransformY({ commit }, payload: object) {
-    commit('setLayoutFieldTextTransformY', payload);
-  },
-
   unsetBackgroundFilename({ commit }) {
     commit('unsetBackgroundFilename');
   },

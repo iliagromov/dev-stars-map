@@ -20,19 +20,19 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
         controls: false,
         datapath: '/vendor/d3-celestial/data/',
         stars: {
-          show: true,
+          show: false,
           limit: 5.2,
           colors: false,
           style: {
             fill: '#fff',
             opacity: 1,
           },
-          designation: true,
+          designation: false,
           designationLimit: 2.5,
           designationType: 'name',
           designationStyle: {
             fill: '#fff',
-            font: `60px ${FONTS_LIST[0]}`,
+            font: `60px ${FONTS_LIST[2]}`,
             align: 'left',
             baseline: 'top',
           },
@@ -56,7 +56,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
           lineStyle: {
             stroke: '#fff',
             width: 1,
-            opacity: 0.6,
+            opacity: 1,
           },
         },
         mw: {
@@ -96,8 +96,6 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
         font: 'AdventureC',
         size: 5,
         color: '#000',
-        transformX: 0,
-        transformY: 0,
       },
     });
   },
@@ -125,14 +123,6 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
 
   setLayoutFieldTextColor(state, payload: LayoutFieldText) {
     state.layoutFieldsText[payload.id].styles.color = payload.styles.color;
-  },
-
-  setLayoutFieldTextTransformX(state, payload: LayoutFieldText) {
-    state.layoutFieldsText[payload.id].styles.transformX = payload.styles.transformX;
-  },
-
-  setLayoutFieldTextTransformY(state, payload: LayoutFieldText) {
-    state.layoutFieldsText[payload.id].styles.transformY = payload.styles.transformY;
   },
 
   setLayoutFieldTextFont(state, payload: LayoutFieldText) {

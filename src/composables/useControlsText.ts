@@ -10,16 +10,12 @@ import useStoreDesignConfig from './useStoreDesignConfig';
 
 export default function useControlsText() {
   const {
-    layoutFieldText,
+    // layoutFieldText,
     setLayoutFieldText,
     layoutFieldTextSize,
     setLayoutFieldTextSize,
     layoutFieldTextColor,
     setLayoutFieldTextColor,
-    layoutFieldTextTransformX,
-    setLayoutFieldTextTransformX,
-    layoutFieldTextTransformY,
-    setLayoutFieldTextTransformY,
     layoutFieldTextFont,
     setLayoutFieldTextFont,
     layoutFieldsText,
@@ -37,7 +33,19 @@ export default function useControlsText() {
     await unsetDefaultLayoutField();
   };
 
-  /** Измение основного массива */
+  /** Измение текста для текстового поля */
+
+  /** Измение текста для текстового поля */
+  // const newLayoutFieldText = layoutFieldsText.value.map((field) => field);
+  // const modelLayoutFieldText = toRefs(newLayoutFieldText);
+
+  // watch(layoutFieldText, (value: string) => {
+  //   modelLayoutFieldText.forEach((item) => {
+  //     item.value.innerText = value;
+  //   });
+  // });
+
+  // watch(modelLayoutFieldText, setLayoutFieldText);
 
   const changeFieldText = async (value: string, index: number) => {
     await setLayoutFieldText({
@@ -79,40 +87,15 @@ export default function useControlsText() {
       },
     });
   };
-  /** Координата transformX для текстового поля */
-
-  const changeFieldTransformX = async (value: number, index: number) => {
-    await setLayoutFieldTextTransformX({
-      id: index,
-      styles: {
-        transformX: +value,
-      },
-    });
-  };
-
-  /** Координата transformY для текстового поля */
-
-  const changeFieldTransformY = async (value: number, index: number) => {
-    await setLayoutFieldTextTransformY({
-      id: index,
-      styles: {
-        transformY: +value,
-      },
-    });
-  };
 
   return {
     layoutFieldsText,
-    layoutFieldText,
+    // modelLayoutFieldText,
     changeFieldText,
     layoutFieldTextSize,
     changeFieldSize,
     layoutFieldTextColor,
     changeFieldColor,
-    layoutFieldTextTransformX,
-    changeFieldTransformX,
-    layoutFieldTextTransformY,
-    changeFieldTransformY,
     layoutFieldTextFont,
 
     modelTextEditorStyleFontFamily,

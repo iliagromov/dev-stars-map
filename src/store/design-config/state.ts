@@ -1,5 +1,5 @@
 import { CelestialConfig } from 'd3-celestial/celestial';
-import { LayoutFieldsText, LayoutFieldText } from '../../types';
+import { LayoutFieldsText } from '../../types';
 
 export interface DesignConfigStateInterface {
   /** Параметры слоя фона-трафарета */
@@ -10,7 +10,6 @@ export interface DesignConfigStateInterface {
 
   layoutFieldsText: LayoutFieldsText,
 
-  textEditor: LayoutFieldText,
   /** Параметры слоя с картой звездного неба */
   stars: {
     /** Сдвиг слоя с картой по оси X */
@@ -32,27 +31,41 @@ function state(): DesignConfigStateInterface {
     layoutFieldsText: [
       {
         id: 0,
-        innerText: 'test',
+        innerText: 'В этот день звезды решили за нас',
         styles: {
           font: 'AdventureC',
-          size: 5,
+          size: 8,
           color: '#000',
-          transformX: 0,
-          transformY: 0,
+        },
+      },
+      {
+        id: 1,
+        innerText: 'ты - мой повод быть лучше',
+        styles: {
+          font: 'AdventureC',
+          size: 8,
+          color: '#000',
+        },
+      },
+      {
+        id: 2,
+        innerText: '3 января 2021',
+        styles: {
+          font: 'AdventureC',
+          size: 8,
+          color: '#000',
+        },
+      },
+      {
+        id: 3,
+        innerText: 'россия, москва',
+        styles: {
+          font: 'AdventureC',
+          size: 8,
+          color: '#000',
         },
       },
     ],
-    textEditor: {
-      id: 0,
-      innerText: 'В этот день звезды решили за нас',
-      styles: {
-        font: null,
-        size: null,
-        color: null,
-        transformX: null,
-        transformY: null,
-      },
-    },
     stars: {
       shiftX: null,
       shiftY: null,

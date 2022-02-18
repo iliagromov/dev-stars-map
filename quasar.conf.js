@@ -66,7 +66,7 @@ module.exports = configure((ctx) => ({
     // rtl: true, // https://quasar.dev/options/rtl-support
     // preloadChunks: true,
     // showProgress: false,
-    // gzip: true,
+    gzip: false,
     // analyze: true,
 
     // Options below are automatically set depending on the env, set them if you want to override
@@ -74,11 +74,33 @@ module.exports = configure((ctx) => ({
 
     // https://quasar.dev/quasar-cli/handling-webpack
     // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-    chainWebpack(chain) {
+    chainWebpack: (chain) => {
+      const svgRule = chain.module.rule('svg');
+      svgRule.uses.clear();
+      svgRule
+        // .test(/\.(svg)(\?.*)?$/)
+        .test(/\.svg$/)
+        .oneOf('inline')
+        .resourceQuery(/inline/)
+        .use('vue-loader')
+        .loader('vue-loader')
+        .end()
+        .use('vue-svg-loader')
+        .loader('vue-svg-loader')
+        .end()
+        .oneOf('external')
+        .use('file-loader')
+        .loader('file-loader')
+        .options({
+          name: 'assets/[name].[hash:8].[ext]',
+        });
       chain.module.rule('pug')
         .test(/\.pug$/)
         .use('pug-plain-loader')
         .loader('pug-plain-loader');
+      chain.module.rule('vue')
+        .use('vue-svg-inline-loader')
+        .loader('vue-svg-inline-loader');
     },
   },
 

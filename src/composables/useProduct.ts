@@ -14,18 +14,18 @@ export default function useProduct() {
     layoutFieldTextFont,
     layoutFieldTextSize,
     layoutFieldTextColor,
-    layoutFieldTextTransformX,
-    layoutFieldTextTransformY,
     starsShiftX,
     starsShiftY,
     starsCelestial,
     setDefaults,
+    setDefaultLayoutField,
   } = useStoreDesignConfig();
 
   const backgroundPath = computed(() => `/images/backgrounds/${backgroundFilename.value}.svg`);
 
   const initProduct = async () => {
     await setDefaults();
+    await setDefaultLayoutField();
   };
 
   const updateCelestial = () => {
@@ -39,8 +39,6 @@ export default function useProduct() {
     layoutFieldTextFont,
     layoutFieldTextSize,
     layoutFieldTextColor,
-    layoutFieldTextTransformX,
-    layoutFieldTextTransformY,
     backgroundPath,
     starsShiftX,
     starsShiftY,

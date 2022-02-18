@@ -7,7 +7,7 @@
       label="Фоновой слой"
       default-opened
     )
-      //-controls-background
+      controls-background
 
     q-separator
     q-expansion-item(

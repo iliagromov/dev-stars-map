@@ -22,16 +22,15 @@ div(v-for="(field, index) in layoutFieldsText"
         .col-4
           q-input(
             debounce="500"
-            label="Текст"
-            :value="field.innerText"
-            @change="changeFieldText($event, index)"
+            :label="field.innerText"
+            @change="changeFieldText($event, field.id)"
           )
-        .col-4
-          q-select(
-            :options="optionsModelTextEditorStyleFontFamily"
-            label="Шрифт"
-            @change="changeFieldFont($event, index)"
-          )
+        //- .col-4
+        //-   q-select(
+        //-     :options="optionsModelTextEditorStyleFontFamily"
+        //-     label="Шрифт"
+        //-     @blur="changeFieldFont($event, index)"
+        //-   )
         .col-4
           q-input(
             type="number"
@@ -56,22 +55,6 @@ div(v-for="(field, index) in layoutFieldsText"
                   cover
                 )
                   q-color(@change="changeFieldColor($event, index)")
-
-        .col-4
-          q-input(
-            type="number"
-            debounce="500"
-            label="Сдвиг текста по оси X"
-            @change="changeFieldTransformX($event, index)"
-          )
-
-        .col-4
-          q-input(
-            type="number"
-            debounce="500"
-            label="Сдвиг текста по оси Y"
-            @change="changeFieldTransformY($event, index)"
-          )
 
 </template>
 

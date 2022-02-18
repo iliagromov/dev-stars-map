@@ -6,8 +6,6 @@ export type LayoutFieldText = {
     font: string,
     size: number,
     color: string,
-    transformX: number,
-    transformY: number,
   }
 }
 export type LayoutFieldsText = LayoutFieldText[]
