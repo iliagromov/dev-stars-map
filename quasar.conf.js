@@ -75,32 +75,92 @@ module.exports = configure((ctx) => ({
     // https://quasar.dev/quasar-cli/handling-webpack
     // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
     chainWebpack: (chain) => {
+      // const FILE_RE = /\.(vue|js|ts|svg)$/;
+      // chain.module.rule('svg').issuer(file => !FILE_RE.test(file));
+      chain.module.rule('svg-component')
+        .test(/\.svg$/)
+        .use('vue')
+        .loader('vue-loader')
+        .end()
+        .use('svg-to-vue-component')
+        .loader('svg-to-vue-component/loader');
+
       const svgRule = chain.module.rule('svg');
       svgRule.uses.clear();
       svgRule
         // .test(/\.(svg)(\?.*)?$/)
+        // .test(/\.svg$/)
+        // .oneOf('inline')
+        // .resourceQuery(/inline/)
+        // .use('vue-loader')
+        // .loader('vue-loader')
+        // .end()
+        // .use('vue-svg-loader')
+        // .loader('vue-svg-loader')
+        // .options({
+        //   svgo: {
+        //     multipass: true,
+        //     datauri: 'unenc',
+        //     plugins: [
+        //       { removeDoctype: true },
+        //       { removeComments: true },
+        //       { prefixIds: true },
+        //     ],
+        //   },
+        // })
+        // .end()
+        // .end()
+        // .oneOf('external')
+        // .use('file-loader')
+        // .loader('file-loader')
+        // .options({
+        //   name: 'assets/[name].[hash:8].[ext]',
+        // });
+        // .options({
+        //   svgo: {
+        //     multipass: true,
+        //     datauri: 'unenc',
+        //     plugins: [
+        //       { removeDoctype: true },
+        //       { removeComments: true },
+        //       { prefixIds: true },
+        //     ],
+        //   },
+        // })
+        // .end()
+        // .use('url-loader')
+        // .loader('url-loader')
+        // .options({
+        //   encoding: false,
+        //   limit: 100000,
+        // })
+        // .end()
+        // .use('file-loader')
+        // .loader('file-loader')
+        // .end()
+        // .use('svgo-loader')
+        // .loader('svgo-loader')
+        // .options({
+        //   multipass: true,
+        //   datauri: 'unenc',
+        //   plugins: [
+        //     { removeDoctype: true },
+        //     { removeComments: true },
+        //     { prefixIds: true },
+        //   ],
+        // });
         .test(/\.svg$/)
-        .oneOf('inline')
+        .oneOf('inline-svg')
         .resourceQuery(/inline/)
         .use('vue-loader')
         .loader('vue-loader')
         .end()
         .use('vue-svg-loader')
-        .loader('vue-svg-loader')
-        .end()
-        .oneOf('external')
-        .use('file-loader')
-        .loader('file-loader')
-        .options({
-          name: 'assets/[name].[hash:8].[ext]',
-        });
+        .loader('vue-svg-loader');
       chain.module.rule('pug')
         .test(/\.pug$/)
         .use('pug-plain-loader')
         .loader('pug-plain-loader');
-      chain.module.rule('vue')
-        .use('vue-svg-inline-loader')
-        .loader('vue-svg-inline-loader');
     },
   },
 

@@ -1,18 +1,29 @@
 <!--eslint-disable max-len-->
 <template lang="html" >
-  <button id="count" @click="count++">{{ count }}</button>
-  <img src="/assets/backgrounds/1.svg" />
-  <!--  <SimpleSVG/> -->
+  <!-- <button id="count" @click="count++">{{ count }}</button> -->
+   <!-- <SvgTest/> -->
+  <div>empty
+  </div>
+  <!-- <q-icon name="svguse:images/backgrounds/1.svg" /> -->
+  <img :src="imageSrc"/>
+  <!-- <img svg-inline class="icon" :src="SvgTest"/> -->
+  <!-- <InlineSvg src="images/backgrounds/1.svg"/> -->
+  <iframe src="images/backgrounds/1.svg"></iframe>
 </template>
 
 <script lang="ts">
+// import InlineSvg from 'vue-inline-svg';
 /* eslint-disable no-console */
 import {
   defineComponent,
 } from 'vue';
-// import {SimpleSVG} from 'vue-simple-svg'
-// import { SimpleSVG } from 'vue-simple-svg';
-import SvgTest from '../assets/backgrounds/1.svg';
+
+// import CheckIcon from '../assets/inline/1.svg';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+// import SvgTest from '../assets/backgrounds/1.svg';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import * as SvgTest from '../assets/inline/1.svg';
 // Composables
 import useSvg from '../composables/useSvg';
 import useProduct from '../composables/useProduct';
@@ -20,10 +31,19 @@ import useProduct from '../composables/useProduct';
 export default defineComponent({
   name: 'Layout1',
   components: {
-    // SvgTest,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     // SimpleSVG,
+    // SvgTest,
+    // InlineSvg,
+    // CheckIcon,
   },
+
+  methods: {
+    handleClick() {
+      console.log('It works!');
+    },
+  },
+
   setup() {
     const {
       svg,
@@ -34,13 +54,13 @@ export default defineComponent({
       layoutFieldsText,
     } = useProduct();
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const s = SvgTest;
     console.log(s);
     return {
       layoutFieldsText,
       svg,
       sSvg,
-      // s,
     };
   },
 });

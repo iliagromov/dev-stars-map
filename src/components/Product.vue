@@ -4,7 +4,8 @@
     :style="starsStyleObject"
   )
   .starmap-product__bg
-    Layout1
+    //- iframe(:src="bgSrc")
+    iframe(id="vueSvg" class="starmap-product__bg-iframe" src="images/backgrounds/layout_1.svg")
   template(v-for="(field, index) in layoutFieldsText")
     .starmap-product__layout-field-text(
       v-html="field.innerText"
@@ -25,12 +26,11 @@ import {
 // Composables
 import useProduct from 'src/composables/useProduct';
 // Components
-import Layout1 from './Svg.vue';
+// import Svg1 from './Svg.vue';
 
 export default defineComponent({
   name: 'Product',
   components: {
-    Layout1,
   },
   setup() {
     const {
@@ -44,14 +44,15 @@ export default defineComponent({
     } = useProduct();
 
     const fontSizes = computed(() => layoutFieldTextSize.value.map((size) => ({ 'font-size': `${size.styles.size}em` })));
-    // eslint-disable-next-line no-console
-    console.log(fontSizes);
+
     const fontColors = computed(() => layoutFieldTextColor.value.map((c) => (
       `color: ${c.styles.color}`)));
 
     const bgStyleObject = computed(() => ({
       backgroundImage: backgroundPath.value ? `url(${backgroundPath.value})` : '',
     }));
+
+    const bgSrc = computed(() => (backgroundPath.value ? backgroundPath.value : ''));
 
     const svgPath = computed(() => backgroundPath.value);
 
@@ -67,14 +68,27 @@ export default defineComponent({
 
     onMounted(async () => {
       await initProduct();
+
+      // const svg = document.querySelector('iframe').contentDocument.querySelector('svg');
+      // svg.style.width = '100%';
+      // svg.style.height = '100%';
     });
 
     // const layoutTexts = computed(() => layoutFieldsText.value.map((i) => i.innerText));
 
     onUpdated(() => {
-      const texts = document.querySelectorAll('#vueSvg text');
+      // FIXME: хардкожу svg в iframe потому что vue-svg-loader выдает ошибку см. issues: https://github.com/visualfanatic/vue-svg-loader/issues/177
+      // const iframeWindow = document.querySelector("#vueSvg-iframe").contentWindow;
+      // const config = {
+      //   text: this.text
+      // };
+      // iframeWindow.setConfig(config);
+      // this.html = iframeWindow.getHtml(`window.baseConfig = ${JSON.stringify(config)};`);
+
+      // eslint-ignore
+      const svgIframe = document.querySelector('iframe');
+      const texts = svgIframe.contentDocument.querySelectorAll('text');
       texts.forEach((item, index:number) => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         item.innerHTML = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
       });
     });
@@ -86,6 +100,7 @@ export default defineComponent({
       starsStyleObject,
       svgPath,
       bgStyleObject,
+      bgSrc,
     };
   },
 });
@@ -122,6 +137,15 @@ export default defineComponent({
     left: 0;
     background: no-repeat center;
     background-size: cover;
+    &-iframe{
+      width: 100%;
+      height: 100%;
+      svg{
+        width: 100%;
+        height: 100%;
+      }
+
+    }
   }
   &__layout-field-text{
     position: relative;
@@ -129,6 +153,7 @@ export default defineComponent({
     width: 100%;
     font-size: 9em;
     text-align: center;
+    opacity: 0;
   }
 }
 
