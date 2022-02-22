@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="297mm" height="420mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
 viewBox="0 0 29700 42000"
  xmlns:xlink="http://www.w3.org/1999/xlink"
  xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
@@ -15,5 +15,11 @@ viewBox="0 0 29700 42000"
  </defs>
  <g>
   <path class="fil0 str0" d="M-0.53 5.8l29700 0 0 42000 -29700 0 0 -42000zm14856.15 34589.58l-6.16 3.45 -6.12 -3.45c-147.07,-82.91 -1608.76,-914.92 -2818.78,-1905.06 -1350.92,-1105.37 -2683.55,-2756.75 -2675.04,-4473.55 6.39,-1296.38 683.76,-2280.9 1625.81,-2707.71 1568.15,-710.52 3187.12,-34.96 3874.13,1176.5 687.02,-1211.46 2306.02,-1887.02 3874.17,-1176.5 942.05,426.81 1619.41,1411.33 1625.81,2707.71 8.51,1716.8 -1324.13,3368.18 -2675.04,4473.55 -1210.03,990.14 -2671.72,1822.15 -2818.78,1905.06zm0 -16189.4l-6.16 3.45 -6.12 -3.45c-147.07,-82.91 -1608.76,-914.92 -2818.78,-1905.06 -1350.92,-1105.37 -2683.55,-2756.75 -2675.04,-4473.55 6.39,-1296.38 683.76,-2280.9 1625.81,-2707.71 1568.15,-710.52 3187.12,-34.96 3874.13,1176.5 687.02,-1211.46 2306.02,-1887.02 3874.17,-1176.5 942.05,426.81 1619.41,1411.33 1625.81,2707.71 8.51,1716.8 -1324.13,3368.18 -2675.04,4473.55 -1210.03,990.14 -2671.72,1822.15 -2818.78,1905.06z"/>
+  <text x="6107.68" y="3978.17"  class="fil1 fnt0" style="fill:#FEFEFE;">в этот день звезды</text>
+  <text x="7714.37" y="6377.05"  class="fil1 fnt0" style="fill:#FEFEFE;">решили за нас</text>
+  <text x="11908.33" y="21708.97"  class="fil1 fnt1" style="fill:#FEFEFE;">руслан</text>
+  <text x="13092.72" y="23175.24"  class="fil1 fnt2" style="fill:#FEFEFE;">11.09.1989</text>
+  <text x="10871.17" y="37898.37"  class="fil1 fnt3" style="fill:#FEFEFE;">людмила</text>
+  <text x="13092.72" y="39364.64"  class="fil1 fnt4" style="fill:#FEFEFE;">12.05.1992</text>
  </g>
 </svg>

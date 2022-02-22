@@ -5,7 +5,7 @@
   )
   .starmap-product__bg
     //- iframe(:src="bgSrc")
-    iframe(id="vueSvg" class="starmap-product__bg-iframe" src="images/backgrounds/layout_1.svg")
+    iframe(id="vueSvg" class="starmap-product__bg-iframe" :src="bgSrc")
   template(v-for="(field, index) in layoutFieldsText")
     .starmap-product__layout-field-text(
       v-html="field.innerText"
@@ -68,24 +68,12 @@ export default defineComponent({
 
     onMounted(async () => {
       await initProduct();
-
-      // const svg = document.querySelector('iframe').contentDocument.querySelector('svg');
-      // svg.style.width = '100%';
-      // svg.style.height = '100%';
     });
 
-    // const layoutTexts = computed(() => layoutFieldsText.value.map((i) => i.innerText));
-
     onUpdated(() => {
-      // FIXME: хардкожу svg в iframe потому что vue-svg-loader выдает ошибку см. issues: https://github.com/visualfanatic/vue-svg-loader/issues/177
-      // const iframeWindow = document.querySelector("#vueSvg-iframe").contentWindow;
-      // const config = {
-      //   text: this.text
-      // };
-      // iframeWindow.setConfig(config);
-      // this.html = iframeWindow.getHtml(`window.baseConfig = ${JSON.stringify(config)};`);
+      // FIXME: хардкожу svg в iframe потому что vue-svg-loader выдает ошибку
+      // см. issues: https://github.com/visualfanatic/vue-svg-loader/issues/177
 
-      // eslint-ignore
       const svgIframe = document.querySelector('iframe');
       const texts = svgIframe.contentDocument.querySelectorAll('text');
       texts.forEach((item, index:number) => {

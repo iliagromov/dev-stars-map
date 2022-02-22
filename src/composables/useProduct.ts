@@ -22,6 +22,7 @@ export default function useProduct() {
   } = useStoreDesignConfig();
 
   const backgroundPath = computed(() => `/images/backgrounds/${backgroundFilename.value}.svg`);
+  const backgroundNamePath = computed(() => `/images/backgrounds/layout_${backgroundFilename.value}.svg`);
 
   const initProduct = async () => {
     await setDefaults();
@@ -40,6 +41,7 @@ export default function useProduct() {
     layoutFieldTextSize,
     layoutFieldTextColor,
     backgroundPath,
+    backgroundNamePath,
     starsShiftX,
     starsShiftY,
     initProduct,

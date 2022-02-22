@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="297mm" height="420mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
 viewBox="0 0 29700 42000"
  xmlns:xlink="http://www.w3.org/1999/xlink"
  xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
@@ -18,5 +18,9 @@ viewBox="0 0 29700 42000"
  </defs>
  <g>
   <path class="fil0" d="M-0.53 5.8l29700 0 0 42000 -29700 0 0 -42000zm14850 4225.65c6461.73,0 11699.99,5238.27 11699.99,11700 0,6461.73 -5238.26,11700 -11699.99,11700 -6461.74,0 -11700,-5238.27 -11700,-11700 0,-6461.73 5238.26,-11700 11700,-11700z"/>
+  <text x="3153.95" y="31829.89"  class="fil1 fnt0">В этот день звезды решили за нас</text>
+  <text x="7195.92" y="33799.47"  class="fil2 fnt1">ты - мой повод быть лучше</text>
+  <text x="12258.22" y="38210.01"  class="fil1 fnt2">3 января 2021</text>
+  <text x="11527.34" y="39127.23"  class="fil1 fnt2">россия, москва</text>
  </g>
 </svg>
