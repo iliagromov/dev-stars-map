@@ -40,6 +40,8 @@ export default defineComponent({
   &__item {
     outline: 1px solid $grey-4;
     outline-offset: 3px;
+    max-width: 234px;
+    max-height: 330px;
 
     &._active {
       outline-color: $grey-9;

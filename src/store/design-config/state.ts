@@ -28,44 +28,7 @@ function state(): DesignConfigStateInterface {
     background: {
       filename: null,
     },
-    layoutFieldsText: [
-      {
-        id: 0,
-        innerText: 'В этот день звезды решили за нас',
-        styles: {
-          font: 'AdventureC',
-          size: 8,
-          color: '#000',
-        },
-      },
-      {
-        id: 1,
-        innerText: 'ты - мой повод быть лучше',
-        styles: {
-          font: 'AdventureC',
-          size: 8,
-          color: '#000',
-        },
-      },
-      {
-        id: 2,
-        innerText: '3 января 2021',
-        styles: {
-          font: 'AdventureC',
-          size: 8,
-          color: '#000',
-        },
-      },
-      {
-        id: 3,
-        innerText: 'россия, москва',
-        styles: {
-          font: 'AdventureC',
-          size: 8,
-          color: '#000',
-        },
-      },
-    ],
+    layoutFieldsText: [],
     stars: {
       shiftX: null,
       shiftY: null,

@@ -19,26 +19,26 @@ div(v-for="(field, index) in layoutFieldsText"
       .row.q-col-gutter-md.q-mb-lg
         .col-12
           .text-overline.text-uppercase.text-blue-grey-5 {{ field.innerText }}
-        .col-4
+        .col-3
           q-input(
             debounce="500"
             :label="field.innerText"
             @change="changeFieldText($event, field.id)"
           )
-        //- .col-4
-        //-   q-select(
-        //-     :options="optionsModelTextEditorStyleFontFamily"
-        //-     label="Шрифт"
-        //-     @blur="changeFieldFont($event, index)"
-        //-   )
-        .col-4
+        .col-3
+          q-select(
+            :options="optionsModelTextEditorStyleFontFamily"
+            label="Шрифт"
+            @blur="changeFieldFont($event, index)"
+          )
+        .col-3
           q-input(
             type="number"
             label="Размер"
             :value="field.styles.size"
             @change="changeFieldSize($event, index)"
           )
-        .col-4
+        .col-3
           q-input(
             debounce="500"
             label="Цвет"

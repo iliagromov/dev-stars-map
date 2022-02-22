@@ -26,11 +26,12 @@ import {
 // Composables
 import useProduct from 'src/composables/useProduct';
 // Components
-// import Svg1 from './Svg.vue';
+import Svg from './Svg.vue';
 
 export default defineComponent({
   name: 'Product',
   components: {
+    Svg,
   },
   setup() {
     const {
@@ -43,7 +44,7 @@ export default defineComponent({
       initProduct,
     } = useProduct();
 
-    const fontSizes = computed(() => layoutFieldTextSize.value.map((size) => ({ 'font-size': `${size.styles.size}em` })));
+    const fontSizes = computed(() => layoutFieldTextSize.value.map((size) => (`${size.styles.size}em`)));
 
     const fontColors = computed(() => layoutFieldTextColor.value.map((c) => (
       `color: ${c.styles.color}`)));
@@ -77,7 +78,10 @@ export default defineComponent({
       const svgIframe = document.querySelector('iframe');
       const texts = svgIframe.contentDocument.querySelectorAll('text');
       texts.forEach((item, index:number) => {
-        item.innerHTML = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
+        item.textContent = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
+        item.style.fontSize = layoutFieldsText.value[index] ? `${layoutFieldsText.value[index].styles.size}em` : '100em';
+        item.style.fill = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.color : '#000000';
+        item.style.fontFamily = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.font : 'AdventureC';
       });
     });
 
