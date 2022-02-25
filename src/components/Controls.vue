@@ -5,7 +5,6 @@
       group="controls"
       icon="image"
       label="Upload Фоновой слой"
-      default-opened
     )
       file-upload
   q-list(bordered)
@@ -13,6 +12,7 @@
       group="controls"
       icon="image"
       label="Фоновой слой"
+      default-opened
     )
       controls-background
 

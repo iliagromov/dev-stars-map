@@ -4,8 +4,7 @@
     :style="starsStyleObject"
   )
   .starmap-product__bg
-    //- iframe(:src="bgSrc")
-    iframe(id="svgIframe" class="starmap-product__bg-iframe" :src="bgSrc")
+    div(id="svgIframe")
   template(v-for="(field, index) in layoutFieldsText")
     .starmap-product__layout-field-text(
       v-html="field.innerText"
@@ -21,7 +20,8 @@ import {
   computed,
   defineComponent,
   onMounted,
-  onUpdated,
+  ref,
+  watch,
 } from 'vue';
 // Composables
 import useProduct from 'src/composables/useProduct';
@@ -34,6 +34,7 @@ export default defineComponent({
     Svg,
   },
   setup() {
+    const modelSvgIframe = ref();
     const {
       layoutFieldsText,
       layoutFieldTextSize,
@@ -43,7 +44,7 @@ export default defineComponent({
       starsShiftY,
       initProduct,
     } = useProduct();
-
+    // const svgText = computed(() => layoutFieldsText.value.map((text) => (text)));
     const fontSizes = computed(() => layoutFieldTextSize.value.map((size) => (`${size.styles.size}em`)));
 
     const fontColors = computed(() => layoutFieldTextColor.value.map((c) => (
@@ -66,29 +67,25 @@ export default defineComponent({
         transform: `translate3d(${translateX}, ${translateY}, 0)`,
       };
     });
-
+    watch(backgroundPath, async () => {
+      const response = await fetch(bgSrc.value);
+      // const response = await fetch(svgPath.value);
+      const responseText = await response.text();
+      // responseText.q
+      // texts.forEach((item, index:number) => {
+      //     item.textContent = layoutFieldsText.value[index] ?
+      // layoutFieldsText.value[index].innerText : '';
+      //     item.style.fontSize = layoutFieldsText.value[index] ?
+      // `${layoutFieldsText.value[index].styles.size}em` : '100em';
+      //     item.style.fill = layoutFieldsText.value[index] ?
+      // layoutFieldsText.value[index].styles.color : '#000000';
+      //     item.style.fontFamily = layoutFieldsText.value[index] ?
+      // layoutFieldsText.value[index].styles.font : 'AdventureC';
+      //   });
+      document.getElementById('svgIframe').insertAdjacentHTML('afterbegin', responseText);
+    });
     onMounted(async () => {
       await initProduct();
-      const svgIframe = document.querySelector('iframe');
-      const texts = svgIframe.contentDocument.querySelectorAll('text');
-      console.log(texts);
-    });
-
-    onUpdated(() => {
-      // FIXME: хардкожу svg в iframe потому что vue-svg-loader выдает ошибку
-      // см. issues: https://github.com/visualfanatic/vue-svg-loader/issues/177
-
-      const svgIframe: HTMLIFrameElement = document.querySelector('#svgIframe');
-
-      if (svgIframe) {
-        const texts = svgIframe.contentDocument.querySelectorAll('text');
-        texts.forEach((item, index:number) => {
-          item.textContent = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
-          item.style.fontSize = layoutFieldsText.value[index] ? `${layoutFieldsText.value[index].styles.size}em` : '100em';
-          item.style.fill = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.color : '#000000';
-          item.style.fontFamily = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.font : 'AdventureC';
-        });
-      }
     });
 
     return {
@@ -98,7 +95,8 @@ export default defineComponent({
       starsStyleObject,
       svgPath,
       bgStyleObject,
-      bgSrc,
+      // bgSrc,
+      modelSvgIframe,
     };
   },
 });

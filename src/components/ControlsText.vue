@@ -22,7 +22,8 @@ div(v-for="(field, index) in layoutFieldsText"
         .col-3
           q-input(
             debounce="500"
-            :label="field.innerText"
+            :label="layoutFieldsText[index].innerText"
+            value="layoutFieldsText[index].innerText"
             @change="changeFieldText($event, field.id)"
           )
         //- .col-3

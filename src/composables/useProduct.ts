@@ -32,6 +32,13 @@ export default function useProduct() {
     celestial.value.display(<CelestialConfig>JSON.parse(JSON.stringify(starsCelestial.value)));
   };
 
+  // const setSvg = async () => {
+  //   // eslint-disable-next-line no-console
+  //   await setDefaultLayoutField();
+  // };
+
+  // watch(backgroundFilename, setSvg);
+
   watch(starsCelestial, updateCelestial, { deep: true });
 
   return {

@@ -94,7 +94,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
       innerText: 'В этот день звезды решили за нас',
       styles: {
         font: 'AdventureC',
-        size: 5,
+        size: 120,
         color: '#000',
       },
     });
