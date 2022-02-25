@@ -5,7 +5,7 @@
   )
   .starmap-product__bg
     //- iframe(:src="bgSrc")
-    iframe(id="vueSvg" class="starmap-product__bg-iframe" :src="bgSrc")
+    iframe(id="svgIframe" class="starmap-product__bg-iframe" :src="bgSrc")
   template(v-for="(field, index) in layoutFieldsText")
     .starmap-product__layout-field-text(
       v-html="field.innerText"
@@ -55,7 +55,7 @@ export default defineComponent({
 
     const bgSrc = computed(() => (backgroundPath.value ? backgroundPath.value : ''));
 
-    const svgPath = computed(() => backgroundPath.value);
+    const svgPath = computed(() => (backgroundPath.value ? `/images/backgrounds/${backgroundPath.value}.svg` : ''));
 
     const starsStyleObject = computed(() => {
       const translateX = `calc(-50% + ${starsShiftX.value}px)`;
@@ -69,20 +69,26 @@ export default defineComponent({
 
     onMounted(async () => {
       await initProduct();
+      const svgIframe = document.querySelector('iframe');
+      const texts = svgIframe.contentDocument.querySelectorAll('text');
+      console.log(texts);
     });
 
     onUpdated(() => {
       // FIXME: хардкожу svg в iframe потому что vue-svg-loader выдает ошибку
       // см. issues: https://github.com/visualfanatic/vue-svg-loader/issues/177
 
-      const svgIframe = document.querySelector('iframe');
-      const texts = svgIframe.contentDocument.querySelectorAll('text');
-      texts.forEach((item, index:number) => {
-        item.textContent = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
-        item.style.fontSize = layoutFieldsText.value[index] ? `${layoutFieldsText.value[index].styles.size}em` : '100em';
-        item.style.fill = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.color : '#000000';
-        item.style.fontFamily = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.font : 'AdventureC';
-      });
+      const svgIframe: HTMLIFrameElement = document.querySelector('#svgIframe');
+
+      if (svgIframe) {
+        const texts = svgIframe.contentDocument.querySelectorAll('text');
+        texts.forEach((item, index:number) => {
+          item.textContent = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
+          item.style.fontSize = layoutFieldsText.value[index] ? `${layoutFieldsText.value[index].styles.size}em` : '100em';
+          item.style.fill = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.color : '#000000';
+          item.style.fontFamily = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.font : 'AdventureC';
+        });
+      }
     });
 
     return {

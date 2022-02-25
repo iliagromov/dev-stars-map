@@ -1,43 +1,38 @@
 <template>
-  <div class="example-drag">
-    <div class="upload">
-      <ul v-if="files.length">
-        <li v-for="file in files" :key="file.id">
-          <span>{{file.name}}</span> -
-          <span>{{$formatSize(file.size)}}</span> -
-          <span v-if="file.error">{{file.error}}</span>
-          <span v-else-if="file.success">success</span>
-          <span v-else-if="file.active">active</span>
-          <span v-else></span>
-        </li>
-      </ul>
-      <ul v-else>
-        <td colspan="7">
-          <div class="text-center p-5">
-            <h4>Drop files anywhere to upload<br/>or</h4>
-            <label for="file" class="btn btn-lg btn-primary">Select Files</label>
-          </div>
-        </td>
-      </ul>
-
-      <div v-show="$refs.upload && $refs.upload.dropActive" class="drop-active">
-        <h3>Drop files to upload</h3>
-      </div>
-
-      <div class="example-btn">
+  <div class="q-pa-md">
+    <div class="q-gutter-sm row items-start">
+      <div >
+        <ul>
+          <li v-for="file in files" :key="file.id">
+            {{file.name}} - Error: {{file.error}},
+            Success: {{file.success}}</li>
+        </ul>
+        <file-upload
+          v-model="files"
+          ref="upload"
+          post-action="/post.method"
+          put-action="/put.method"
+          @input-file="inputFile"
+          @input-filter="inputFilter"
+        >
+        Upload file
+        </file-upload>
         <button type="button"
-          class="btn btn-success"
-          v-if="!$refs.upload || !$refs.upload.active"
-          @click.prevent="$refs.upload.active = true">
+        class="btn btn-success"
+        v-if="!upload || !upload.active"
+        @click.prevent="upload.active = true">
           <i class="fa fa-arrow-up" aria-hidden="true"></i>
           Start Upload
         </button>
         <button type="button"
-          class="btn btn-danger"
-          v-else @click.prevent="$refs.upload.active = false">
+        class="btn btn-danger"
+        v-else @click.prevent="upload.active = false">
           <i class="fa fa-stop" aria-hidden="true"></i>
           Stop Upload
         </button>
+      </div>
+      <div class="image-preview" v-for="file in files" :key="file.id">
+        <img v-if="file.thumb"  :src="file.thumb" >
       </div>
     </div>
   </div>
@@ -45,20 +40,29 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import FileUpload from 'vue-upload-component';
 import useFileUpload from 'src/composables/useFileUpload';
 
 export default defineComponent({
-  name: 'FileUpload',
+  name: 'FileUploadC',
   components: {
+    'file-upload': FileUpload,
   },
-
   setup() {
     const {
       files,
+      upload,
+      imageData,
+      inputFile,
+      inputFilter,
     } = useFileUpload();
 
     return {
       files,
+      upload,
+      imageData,
+      inputFile,
+      inputFilter,
     };
   },
 
@@ -96,5 +100,12 @@ export default defineComponent({
   font-size: 40px;
   color: #fff;
   padding: 0;
+}
+.image-preview img{
+  width: 100%;
+  height: 100%;
+  max-width: 234px;
+  max-height: 330px;
+
 }
 </style>

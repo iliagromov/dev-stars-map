@@ -25,11 +25,11 @@ div(v-for="(field, index) in layoutFieldsText"
             :label="field.innerText"
             @change="changeFieldText($event, field.id)"
           )
-        .col-3
-          q-select(
-            :options="optionsModelTextEditorStyleFontFamily"
-            label="Шрифт"
-            @blur="changeFieldFont($event, index)"
+        //- .col-3
+        //-   q-select(
+        //-     :options="optionsModelTextEditorStyleFontFamily"
+        //-     label="Шрифт"
+        //-     @blur="changeFieldFont($event, index)"
           )
         .col-3
           q-input(
