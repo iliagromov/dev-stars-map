@@ -3,8 +3,7 @@
   #celestial-map.starmap-product__stars(
     :style="starsStyleObject"
   )
-  .starmap-product__bg
-    div(id="svgIframe")
+  .starmap-product__bg(v-html="modelSvgIframe")
   template(v-for="(field, index) in layoutFieldsText")
     .starmap-product__layout-field-text(
       v-html="field.innerText"
@@ -34,8 +33,9 @@ export default defineComponent({
     Svg,
   },
   setup() {
-    const modelSvgIframe = ref();
+    const modelSvgIframe = ref<string>();
     const {
+      // layoutFieldText,
       layoutFieldsText,
       layoutFieldTextSize,
       layoutFieldTextColor,
@@ -44,7 +44,8 @@ export default defineComponent({
       starsShiftY,
       initProduct,
     } = useProduct();
-    // const svgText = computed(() => layoutFieldsText.value.map((text) => (text)));
+
+    const svgText = computed(() => layoutFieldsText.value.map((text) => (text.innerText)));
     const fontSizes = computed(() => layoutFieldTextSize.value.map((size) => (`${size.styles.size}em`)));
 
     const fontColors = computed(() => layoutFieldTextColor.value.map((c) => (
@@ -55,9 +56,6 @@ export default defineComponent({
     }));
 
     const bgSrc = computed(() => (backgroundPath.value ? backgroundPath.value : ''));
-
-    const svgPath = computed(() => (backgroundPath.value ? `/images/backgrounds/${backgroundPath.value}.svg` : ''));
-
     const starsStyleObject = computed(() => {
       const translateX = `calc(-50% + ${starsShiftX.value}px)`;
       /** Для первого макета Y75% */
@@ -67,23 +65,35 @@ export default defineComponent({
         transform: `translate3d(${translateX}, ${translateY}, 0)`,
       };
     });
-    watch(backgroundPath, async () => {
+
+    // каждый раз приходится парсить svg
+    // можно сделать компьютед?
+    // каждый раз запрашиваю bg и деалю парсиннг, может хранить svg в store?
+    // шрифт в свг обновляется не сразу,..
+    const renderSVG = async () => {
       const response = await fetch(bgSrc.value);
-      // const response = await fetch(svgPath.value);
       const responseText = await response.text();
-      // responseText.q
-      // texts.forEach((item, index:number) => {
-      //     item.textContent = layoutFieldsText.value[index] ?
-      // layoutFieldsText.value[index].innerText : '';
-      //     item.style.fontSize = layoutFieldsText.value[index] ?
-      // `${layoutFieldsText.value[index].styles.size}em` : '100em';
-      //     item.style.fill = layoutFieldsText.value[index] ?
-      // layoutFieldsText.value[index].styles.color : '#000000';
-      //     item.style.fontFamily = layoutFieldsText.value[index] ?
-      // layoutFieldsText.value[index].styles.font : 'AdventureC';
-      //   });
-      document.getElementById('svgIframe').insertAdjacentHTML('afterbegin', responseText);
-    });
+      const parser = new DOMParser();
+      const svg = parser.parseFromString(responseText, 'image/svg+xml');
+
+      svg.querySelectorAll('text').forEach((item, index:number) => {
+        // fixme: layoutFieldsText.value[index]
+        item.textContent = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
+        item.style.fontSize = layoutFieldsText.value[index] ? `${layoutFieldsText.value[index].styles.size}em` : '100em';
+        item.style.fill = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.color : '#000000';
+        item.style.fontFamily = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.font : 'AdventureC';
+      });
+
+      modelSvgIframe.value = svg.documentElement.outerHTML;
+    };
+
+    // watch изменения текста, шрифта, размера
+    watch(backgroundPath, renderSVG);
+    // watch(layoutFieldText, renderSVG);
+    watch(svgText, renderSVG);
+    watch(fontSizes, renderSVG);
+    watch(fontColors, renderSVG);
+
     onMounted(async () => {
       await initProduct();
     });
@@ -93,9 +103,7 @@ export default defineComponent({
       fontSizes,
       fontColors,
       starsStyleObject,
-      svgPath,
       bgStyleObject,
-      // bgSrc,
       modelSvgIframe,
     };
   },

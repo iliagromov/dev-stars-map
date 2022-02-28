@@ -22,6 +22,7 @@ export default function useProduct() {
   } = useStoreDesignConfig();
 
   const backgroundPath = computed(() => backgroundFilename.value);
+  const svgText = computed(() => layoutFieldsText.value.map((text) => (text)));
 
   const initProduct = async () => {
     await setDefaults();
@@ -42,6 +43,7 @@ export default function useProduct() {
   watch(starsCelestial, updateCelestial, { deep: true });
 
   return {
+    svgText,
     layoutFieldsText,
     layoutFieldTextFont,
     layoutFieldTextSize,

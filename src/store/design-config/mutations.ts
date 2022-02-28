@@ -87,10 +87,8 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
   },
 
   setDefaultLayoutField(state) {
-    // const index = state.layoutFieldsText.length;
-    const index = 0 + Math.max(0, ...state.layoutFieldsText.map((n:LayoutFieldText) => n.id));
     state.layoutFieldsText.push({
-      id: index,
+      id: state.layoutFieldsText.length,
       innerText: 'В этот день звезды решили за нас',
       styles: {
         font: 'AdventureC',

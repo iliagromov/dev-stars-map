@@ -22,27 +22,28 @@ div(v-for="(field, index) in layoutFieldsText"
         .col-3
           q-input(
             debounce="500"
-            :label="layoutFieldsText[index].innerText"
-            value="layoutFieldsText[index].innerText"
+            :model-value="field.innerText"
+            label="Текст макета"
             @change="changeFieldText($event, field.id)"
           )
-        //- .col-3
-        //-   q-select(
-        //-     :options="optionsModelTextEditorStyleFontFamily"
-        //-     label="Шрифт"
-        //-     @blur="changeFieldFont($event, index)"
-          )
+        .col-3
+          q-select(
+            :model-value="field.styles.font"
+            @update:model-value="changeFieldFont($event, index)"
+            :options="optionsModelTextEditorStyleFontFamily"
+            label="Шрифт")
         .col-3
           q-input(
             type="number"
             label="Размер"
-            :value="field.styles.size"
+            :model-value="field.styles.size"
             @change="changeFieldSize($event, index)"
           )
         .col-3
           q-input(
             debounce="500"
             label="Цвет"
+            :model-value="field.styles.color"
             @change="changeFieldColor($event, index)"
           )
             template(v-slot:append)

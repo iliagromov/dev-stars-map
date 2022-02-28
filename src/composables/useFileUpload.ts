@@ -20,14 +20,12 @@ export default function useFileUpload() {
   ) => {
     if (newFile && newFile.error === '' && newFile.file && (!oldFile || newFile.file !== oldFile.file)) {
       // Create a blob field
-      // 创建 blob 字段
       newFile.blob = '';
       const URL = (window.URL || window.webkitURL);
       if (URL) {
         newFile.blob = URL.createObjectURL(newFile.file);
       }
       // Thumbnails
-      // 缩略图
       newFile.thumb = '';
       if (newFile.blob && newFile.type.substr(0, 6) === 'image/') {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

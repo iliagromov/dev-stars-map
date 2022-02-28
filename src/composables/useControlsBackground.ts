@@ -39,7 +39,7 @@ export default function useControlsBackground() {
     if (bg2.active) {
       await unsetBackgroundFilename();
     } else {
-      await setBackgroundFilename(bg2.filename);
+      await setBackgroundFilename(bg2.path);
     }
   };
 

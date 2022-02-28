@@ -1,9 +1,5 @@
-// Vendor
-import { ref } from 'vue';
-
 // Config
 import { FONTS_LIST } from 'src/config';
-import { LayoutFieldsText } from 'src/types';
 
 // Composables
 import useStoreDesignConfig from './useStoreDesignConfig';
@@ -55,9 +51,6 @@ export default function useControlsText() {
   };
 
   /** Семейство Шрифтов для текстового поля  */
-  const modelTextEditorStyleFontFamily = ref<LayoutFieldsText>(null);
-  modelTextEditorStyleFontFamily.value = layoutFieldsText.value.map((field) => field);
-
   const optionsModelTextEditorStyleFontFamily = FONTS_LIST;
 
   const changeFieldFont = async (value: string, index: number) => {
@@ -98,7 +91,6 @@ export default function useControlsText() {
     changeFieldColor,
     layoutFieldTextFont,
 
-    modelTextEditorStyleFontFamily,
     optionsModelTextEditorStyleFontFamily,
 
     changeFieldFont,
