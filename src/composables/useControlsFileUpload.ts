@@ -1,12 +1,10 @@
 /* eslint-disable no-console */
 import { ref } from 'vue';
-// import VueUploadComponent from 'vue-upload-component/src/FileUpload.vue';
 import type { VueUploadItem } from 'vue-upload-component';
 // Composables
 import useStoreDesignConfig from 'src/composables/useStoreDesignConfig';
 
 export default function useFileUpload() {
-  const imageData = ref();
   const upload = ref();
   const files = ref([]);
   const {
@@ -30,38 +28,29 @@ export default function useFileUpload() {
       if (newFile.blob && newFile.type.substr(0, 6) === 'image/') {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         newFile.thumb = newFile.blob;
-        // set
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         await setBackgroundFilename(newFile.blob);
       }
     }
-    console.log('test');
   };
   const inputFile = async (newFile: VueUploadItem | undefined, oldFile: unknown | undefined) => {
     if (newFile && !oldFile) {
-      // add
-      console.log('add', newFile);
-      console.log('add', newFile.blob);
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       await setBackgroundFilename(newFile.blob);
     }
     if (newFile && oldFile) {
       // update
-      console.log('update', newFile);
+      // console.log('update', newFile);
     }
     if (!newFile && oldFile) {
       // remove
-      console.log('remove', oldFile);
+      // console.log('remove', oldFile);
     }
-    // returning a Promise
-    console.log('test');
   };
 
   return {
     upload,
     files,
-    imageData,
     inputFile,
     inputFilter,
   };

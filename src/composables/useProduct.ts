@@ -1,5 +1,5 @@
 // Vendor
-import { computed, ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import d3Celestial, { Celestial, CelestialConfig } from 'd3-celestial/celestial';
 
 // Composables
@@ -9,11 +9,6 @@ export default function useProduct() {
   const celestial = ref<Celestial>(new d3Celestial.Celestial());
 
   const {
-    backgroundFilename,
-    layoutFieldsText,
-    layoutFieldTextFont,
-    layoutFieldTextSize,
-    layoutFieldTextColor,
     starsShiftX,
     starsShiftY,
     starsCelestial,
@@ -21,36 +16,27 @@ export default function useProduct() {
     setDefaultLayoutField,
   } = useStoreDesignConfig();
 
-  const backgroundPath = computed(() => backgroundFilename.value);
-  const svgText = computed(() => layoutFieldsText.value.map((text) => (text)));
-
   const initProduct = async () => {
     await setDefaults();
     await setDefaultLayoutField();
   };
 
+  const starsStyleObject = computed(() => {
+    const translateX = `calc(-50% + ${starsShiftX.value}px)`;
+    const translateY = `calc(-75% + ${starsShiftY.value}px)`;
+    return {
+      transform: `translate3d(${translateX}, ${translateY}, 0)`,
+    };
+  });
+
   const updateCelestial = () => {
     celestial.value.display(<CelestialConfig>JSON.parse(JSON.stringify(starsCelestial.value)));
   };
 
-  // const setSvg = async () => {
-  //   // eslint-disable-next-line no-console
-  //   await setDefaultLayoutField();
-  // };
-
-  // watch(backgroundFilename, setSvg);
-
   watch(starsCelestial, updateCelestial, { deep: true });
 
   return {
-    svgText,
-    layoutFieldsText,
-    layoutFieldTextFont,
-    layoutFieldTextSize,
-    layoutFieldTextColor,
-    backgroundPath,
-    starsShiftX,
-    starsShiftY,
+    starsStyleObject,
     initProduct,
   };
 }

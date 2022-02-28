@@ -4,9 +4,9 @@
     q-expansion-item(
       group="controls"
       icon="image"
-      label="Upload Фоновой слой"
+      label="Загрузить Фоновой слой"
     )
-      file-upload
+      controls-file-upload
   q-list(bordered)
     q-expansion-item(
       group="controls"
@@ -41,7 +41,7 @@ import { defineComponent } from 'vue';
 import ControlsBackground from 'components/ControlsBackground.vue';
 import ControlsStars from 'components/ControlsStars.vue';
 import ControlsText from 'components/ControlsText.vue';
-import FileUpload from 'components/FileUpload.vue';
+import ControlsFileUpload from 'src/components/ControlsFileUpload.vue';
 
 export default defineComponent({
   name: 'Controls',
@@ -50,7 +50,7 @@ export default defineComponent({
     ControlsBackground,
     ControlsStars,
     ControlsText,
-    FileUpload,
+    ControlsFileUpload,
   },
 });
 </script>

@@ -31,6 +31,7 @@ q-card
           v-model.number="modelShiftX"
           debounce="500"
           label="Сдвиг слоя по оси X"
+          type="number"
         )
 
       .col-4
@@ -38,6 +39,7 @@ q-card
           v-model.number="modelShiftY"
           debounce="500"
           label="Сдвиг слоя по оси Y"
+          type="number"
         )
 
       .col-4
