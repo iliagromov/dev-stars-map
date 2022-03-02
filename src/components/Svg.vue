@@ -19,5 +19,8 @@ export default defineComponent({
 
 </script>
 <style scoped>
-
+.svg-tempalte{
+  width: 100%;
+  height: 100%;
+}
 </style>

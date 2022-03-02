@@ -4,14 +4,14 @@
     q-expansion-item(
       group="controls"
       icon="image"
-      label="Загрузить Фоновой слой"
+      label="Загрузить Фоновый слой"
     )
       controls-file-upload
   q-list(bordered)
     q-expansion-item(
       group="controls"
       icon="image"
-      label="Фоновой слой"
+      label="Фоновый слой"
       default-opened
     )
       controls-background

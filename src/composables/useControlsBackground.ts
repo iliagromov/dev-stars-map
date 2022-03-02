@@ -18,7 +18,7 @@ export default function useControlsBackground() {
 
   backgrounds.value = BACKGROUNDS.map((filename: string) => ({
     active: false,
-    path: `/images/backgrounds/${filename}.svg`,
+    path: `./images/backgrounds/${filename}.svg`,
     filename,
   }));
 

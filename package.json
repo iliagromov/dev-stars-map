@@ -12,7 +12,9 @@
   "dependencies": {
     "@iconfu/svg-inject": "^1.2.3",
     "@quasar/extras": "^1.0.0",
+    "axios": "^0.26.0",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "d3-celestial": "0.7.12",
     "quasar": "^2.0.0",
     "vuex": "^4.0.1"

@@ -54,9 +54,8 @@ module.exports = configure((ctx) => ({
   // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
   build: {
     vueRouterMode: 'hash', // available values: 'hash', 'history'
-
     // transpile: false,
-    // publicPath: '/',
+    // publicPath: './',
 
     // Add dependencies for transpiling with Babel (Array of string/regex)
     // (from node_modules, which are by default not transpiled).
@@ -66,7 +65,7 @@ module.exports = configure((ctx) => ({
     // rtl: true, // https://quasar.dev/options/rtl-support
     // preloadChunks: true,
     // showProgress: false,
-    gzip: false,
+    // gzip: false,
     // analyze: true,
 
     // Options below are automatically set depending on the env, set them if you want to override
@@ -75,8 +74,6 @@ module.exports = configure((ctx) => ({
     // https://quasar.dev/quasar-cli/handling-webpack
     // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
     chainWebpack: (chain) => {
-      // const FILE_RE = /\.(vue|js|ts|svg)$/;
-      // chain.module.rule('svg').issuer(file => !FILE_RE.test(file));
       chain.module.rule('svg-component')
         .test(/\.svg$/)
         .use('vue')
@@ -88,67 +85,6 @@ module.exports = configure((ctx) => ({
       const svgRule = chain.module.rule('svg');
       svgRule.uses.clear();
       svgRule
-        // .test(/\.(svg)(\?.*)?$/)
-        // .test(/\.svg$/)
-        // .oneOf('inline')
-        // .resourceQuery(/inline/)
-        // .use('vue-loader')
-        // .loader('vue-loader')
-        // .end()
-        // .use('vue-svg-loader')
-        // .loader('vue-svg-loader')
-        // .options({
-        //   svgo: {
-        //     multipass: true,
-        //     datauri: 'unenc',
-        //     plugins: [
-        //       { removeDoctype: true },
-        //       { removeComments: true },
-        //       { prefixIds: true },
-        //     ],
-        //   },
-        // })
-        // .end()
-        // .end()
-        // .oneOf('external')
-        // .use('file-loader')
-        // .loader('file-loader')
-        // .options({
-        //   name: 'assets/[name].[hash:8].[ext]',
-        // });
-        // .options({
-        //   svgo: {
-        //     multipass: true,
-        //     datauri: 'unenc',
-        //     plugins: [
-        //       { removeDoctype: true },
-        //       { removeComments: true },
-        //       { prefixIds: true },
-        //     ],
-        //   },
-        // })
-        // .end()
-        // .use('url-loader')
-        // .loader('url-loader')
-        // .options({
-        //   encoding: false,
-        //   limit: 100000,
-        // })
-        // .end()
-        // .use('file-loader')
-        // .loader('file-loader')
-        // .end()
-        // .use('svgo-loader')
-        // .loader('svgo-loader')
-        // .options({
-        //   multipass: true,
-        //   datauri: 'unenc',
-        //   plugins: [
-        //     { removeDoctype: true },
-        //     { removeComments: true },
-        //     { prefixIds: true },
-        //   ],
-        // });
         .test(/\.svg$/)
         .oneOf('inline-svg')
         .resourceQuery(/inline/)
@@ -166,11 +102,16 @@ module.exports = configure((ctx) => ({
 
   // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
   devServer: {
+    allowedHosts: 'all',
     server: {
       type: 'http',
     },
     port: 8080,
     open: true, // opens browser window automatically
+    headers: {
+      'access-control-allow-origin': '*',
+      'access-control-allow-methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+    },
   },
 
   // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework

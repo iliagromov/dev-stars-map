@@ -12,7 +12,7 @@
       )
         q-btn(color="primary" label="Загрузить файл")
     .col-4(v-for="file in files" :key="file.id")
-      img(v-if="file.thumb"
+      img.controls-file-upload__item(v-if="file.thumb"
         :src="file.thumb")
 </template>
 
@@ -37,5 +37,7 @@ export default defineComponent({
 </script>
 
 <style>
-
+.controls-file-upload__item{
+  max-width: 100%;
+}
 </style>

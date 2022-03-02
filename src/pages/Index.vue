@@ -1,6 +1,6 @@
 <template lang="pug">
 q-page.row
-  .col-5.bg-green-2
+  .col-5.bg-green-2(v-show="true")
     controls
   .col-7
     transition(

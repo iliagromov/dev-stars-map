@@ -1,11 +1,11 @@
 // Vendor
 import { computed, ref, watch } from 'vue';
+import axios from 'axios';
 import useStoreDesignConfig from './useStoreDesignConfig';
 
 export default function useSvg() {
   const modelSvgIframe = ref<string>();
   const {
-    // layoutFieldText,
     backgroundFilename,
     layoutFieldsText,
     layoutFieldTextFont,
@@ -22,8 +22,8 @@ export default function useSvg() {
   // каждый раз приходится парсить svg
   const renderSVG = async () => {
     if (bgSrc.value) {
-      const response = await fetch(bgSrc.value);
-      const responseText = await response.text();
+      const response = await axios.get(bgSrc.value);
+      const responseText = (response.data as string);
       const parser = new DOMParser();
       const svg = parser.parseFromString(responseText, 'image/svg+xml');
 
