@@ -13,12 +13,10 @@ export default function useProduct() {
     starsShiftY,
     starsCelestial,
     setDefaults,
-    setDefaultLayoutField,
   } = useStoreDesignConfig();
 
   const initProduct = async () => {
     await setDefaults();
-    await setDefaultLayoutField();
   };
 
   const starsStyleObject = computed(() => {

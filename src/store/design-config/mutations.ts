@@ -93,11 +93,10 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
       styles: {
         font: 'AdventureC',
         size: 120,
-        color: '#000',
+        color: '#000000',
       },
     });
   },
-
   unsetDefaultLayoutField(state) {
     state.layoutFieldsText.pop();
   },

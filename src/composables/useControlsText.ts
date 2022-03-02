@@ -31,18 +31,6 @@ export default function useControlsText() {
 
   /** Измение текста для текстового поля */
 
-  /** Измение текста для текстового поля */
-  // const newLayoutFieldText = layoutFieldsText.value.map((field) => field);
-  // const modelLayoutFieldText = toRefs(newLayoutFieldText);
-
-  // watch(layoutFieldText, (value: string) => {
-  //   modelLayoutFieldText.forEach((item) => {
-  //     item.value.innerText = value;
-  //   });
-  // });
-
-  // watch(modelLayoutFieldText, setLayoutFieldText);
-
   const changeFieldText = async (value: string, index: number) => {
     await setLayoutFieldText({
       id: index,
@@ -83,7 +71,6 @@ export default function useControlsText() {
 
   return {
     layoutFieldsText,
-    // modelLayoutFieldText,
     changeFieldText,
     layoutFieldTextSize,
     changeFieldSize,
