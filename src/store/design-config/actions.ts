@@ -20,6 +20,10 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setBackgroundFilename', payload);
   },
 
+  setSvgBlobUrl({ commit }, payload: string) {
+    commit('setSvgBlobUrl', payload);
+  },
+
   setLayoutField({ commit }, payload: object) {
     commit('setLayoutField', payload);
   },

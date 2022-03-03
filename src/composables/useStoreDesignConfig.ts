@@ -13,6 +13,16 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/setDefaultStars');
   };
 
+  /** Готовый blob file */
+  const svgBlobUrl = computed(
+    () => store.state.designConfig.svg.bloburl,
+  );
+
+  /** Установка готового svg */
+  const setSvgBlobUrl = async (value: string) => {
+    await store.dispatch('designConfig/setSvgBlobUrl', value);
+  };
+
   /** Выбранный файл фона */
   const backgroundFilename = computed(
     () => store.state.designConfig.background.filename,
@@ -346,6 +356,9 @@ export default function useStoreDesignConfig() {
     setDefaults,
     setDefaultLayoutField,
     unsetDefaultLayoutField,
+
+    svgBlobUrl,
+    setSvgBlobUrl,
     backgroundFilename,
     setBackgroundFilename,
     unsetBackgroundFilename,

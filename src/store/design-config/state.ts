@@ -21,6 +21,11 @@ export interface DesignConfigStateInterface {
     /** Конфигурация карты звездного неба */
     celestial: Partial<CelestialConfig>;
   };
+
+  svg: {
+    /** Blob URL готового svg файла */
+    bloburl: string;
+  };
 }
 
 function state(): DesignConfigStateInterface {
@@ -33,6 +38,9 @@ function state(): DesignConfigStateInterface {
       shiftX: null,
       shiftY: null,
       celestial: null,
+    },
+    svg: {
+      bloburl: null,
     },
   };
 }

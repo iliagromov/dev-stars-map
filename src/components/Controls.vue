@@ -3,11 +3,12 @@
   q-list(bordered)
     q-expansion-item(
       group="controls"
-      icon="image"
+      icon="cloud_upload"
       label="Загрузить Фоновый слой"
     )
       controls-file-upload
-  q-list(bordered)
+
+    q-separator
     q-expansion-item(
       group="controls"
       icon="image"
@@ -23,14 +24,22 @@
       label="Текст"
     )
       controls-text
-    q-separator
 
+    q-separator
     q-expansion-item(
       group="controls"
       icon="mdi-star"
       label="Карта звездного неба"
     )
       controls-stars
+
+    q-separator
+    q-expansion-item(
+      group="controls"
+      icon="file_download"
+      label="Скачать результат"
+    )
+      controls-file-download
 </template>
 
 <script lang="ts">
@@ -42,6 +51,7 @@ import ControlsBackground from 'components/ControlsBackground.vue';
 import ControlsStars from 'components/ControlsStars.vue';
 import ControlsText from 'components/ControlsText.vue';
 import ControlsFileUpload from 'src/components/ControlsFileUpload.vue';
+import ControlsFileDownload from 'src/components/ControlsFileDownload.vue';
 
 export default defineComponent({
   name: 'Controls',
@@ -51,6 +61,7 @@ export default defineComponent({
     ControlsStars,
     ControlsText,
     ControlsFileUpload,
+    ControlsFileDownload,
   },
 });
 </script>

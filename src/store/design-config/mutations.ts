@@ -105,6 +105,10 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
     state.background.filename = payload;
   },
 
+  setSvgBlobUrl(state, payload: string) {
+    state.svg.bloburl = payload;
+  },
+
   setLayoutField(state, payload: LayoutFieldText) {
     state.layoutFieldsText[payload.id] = payload;
     // state.layoutFieldsText[payload.id].styles = payload.styles;
