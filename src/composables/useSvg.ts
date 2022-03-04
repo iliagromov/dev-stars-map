@@ -20,9 +20,7 @@ export default function useSvg() {
   const fontSizes = computed(() => layoutFieldTextSize.value.map((size) => (`${size.styles.size}em`)));
   const fontColors = computed(() => layoutFieldTextColor.value.map((color) => (
     `color: ${color.styles.color}`)));
-  // каждый раз приходится парсить svg
-  // cкачивать svg
-  // перобразовать обратно в блоб
+  // FIXME: каждый раз приходится рендерить svg
   const renderSVG = async () => {
     if (bgSrc.value) {
       const xml = '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">';
@@ -30,12 +28,9 @@ export default function useSvg() {
       const responseText = (response.data as string);
       const parser = new DOMParser();
       const svg = parser.parseFromString(responseText, 'image/svg+xml');
-      const canvas = document.querySelector('canvas').toDataURL();
-      const img = document.createElement('image');
-      img.setAttribute('href', canvas);
-      svg.querySelector('svg g').appendChild(img);
+
       svg.querySelectorAll('text').forEach((item, index:number) => {
-        // fixme: layoutFieldsText.value[index]
+        // FIXME: layoutFieldsText.value[index]
         item.textContent = layoutFieldsText.value[index] ? layoutFieldsText.value[index].innerText : '';
         item.style.fontSize = layoutFieldsText.value[index] ? `${layoutFieldsText.value[index].styles.size}em` : '100em';
         item.style.fill = layoutFieldsText.value[index] ? layoutFieldsText.value[index].styles.color : '#000000';
@@ -43,8 +38,7 @@ export default function useSvg() {
       });
 
       modelSvgIframe.value = svg.documentElement.outerHTML;
-      const outerSVG = xml + svg.documentElement.outerHTML;
-      const blob = new Blob([outerSVG], { type: 'image/svg+xml' });
+      const blob = new Blob([xml + svg.documentElement.outerHTML], { type: 'image/svg+xml' });
       const href = window.URL.createObjectURL(blob);
       await setSvgBlobUrl(href);
     }
