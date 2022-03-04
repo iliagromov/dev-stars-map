@@ -24,6 +24,7 @@ q-card
           v-model.number="modelCelestialWidth"
           debounce="500"
           label="Размер"
+          type="number"
         )
 
       .col-4
@@ -47,6 +48,7 @@ q-card
           v-model.number="modelCelestialZoomlevel"
           debounce="500"
           label="Масштаб"
+          type="number"
         )
 
       .col-12
@@ -59,6 +61,7 @@ q-card
             v-model.number="modelCelestialStarsLimit"
             debounce="500"
             label="Лимит"
+            type="number"
           )
 
         .col-3
@@ -66,6 +69,7 @@ q-card
             v-model.number="modelCelestialStarsSize"
             debounce="500"
             label="Размер"
+            type="number"
           )
 
         .col-3
@@ -73,6 +77,7 @@ q-card
             v-model.number="modelCelestialStarsStyleOpacity"
             debounce="500"
             label="Прозрачность"
+            type="number"
           )
 
         .col-3
@@ -111,6 +116,7 @@ q-card
               v-model.number="modelCelestialStarsDesignationLimit"
               debounce="500"
               label="Лимит"
+              type="number"
             )
 
           .col-3
@@ -150,6 +156,7 @@ q-card
               v-model.number="modelCelestialStarsDesignationStyleFontSize"
               debounce="500"
               label="Размер"
+              type="number"
             )
 
           .col-6
@@ -158,6 +165,7 @@ q-card
               label="Выравнивание"
               emit-value map-options
               :options="optionsCelestialStarsDesignationStylePosition"
+              type="number"
             )
 </template>
 

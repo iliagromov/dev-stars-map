@@ -1,12 +1,22 @@
 <template lang="pug">
-.row.q-mb-lg
-  q-btn(
-    color="primary"
-    label="Cкачать SVG"
-    :href="svgBlobUrl"
-    download="layout.svg"
-    :disable="isSvgDone"
-    )
+.q-gutter-sm.row.items-start
+  .q-pa-md
+    .row
+      .q-pa-xs
+        q-btn(
+          color="primary"
+          label="Cкачать SVG"
+          :href="svgBlobUrl"
+          download="layout.svg"
+          :disable="isSvgDone"
+          )
+      .q-pa-xs
+        q-btn(
+          color="primary"
+          label="Cкачать JSON"
+          :href="configJson"
+          download="config.json"
+          )
 </template>
 
 <script lang="ts">
