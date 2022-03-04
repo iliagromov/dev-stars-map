@@ -42,9 +42,10 @@ export default defineComponent({
 
 <style lang="scss">
 .starmap-product {
-  width: $paper-format-a3-width;
-  height: $paper-format-a3-height;
-  transform: translate(-50%, -50%) scale(.25);
+  width: $paper-format-default-width;
+  height: $paper-format-default-height;
+  // transform: translate(-50%, -50%) scale(.25);
+  transform: translate(-50%, -50%) scale(.85);
   transform-origin: center;
   position: absolute;
   top: 50%;

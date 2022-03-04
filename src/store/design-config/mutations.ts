@@ -10,8 +10,8 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
       shiftX: 0,
       shiftY: 0,
       celestial: {
-        width: 2339,
-        projection: 'mercator',
+        width: 760,
+        projection: 'airy',
         transform: 'equatorial',
         geopos: [55.7558, 37.6173],
         zoomlevel: 1,
@@ -80,8 +80,104 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
           },
         },
         background: {
-          fill: 'transparent',
+          fill: '#000',
         },
+      },
+      colorScheme: [
+        {
+          celestialParams: {
+            stars: {
+              limit: 5.2,
+              size: 5,
+              style: {
+                fill: '#fff',
+              },
+            },
+            constellations: {
+              lineStyle: {
+                stroke: ['#ddd'],
+                opacity: 0.8,
+                width: 1,
+              },
+            },
+            background: {
+              stroke: 'transparent',
+              width: 0,
+            },
+          },
+        },
+        {
+          celestialParams: {
+            stars: {
+              limit: 5.2,
+              size: 5,
+              style: {
+                fill: '#fff',
+              },
+            },
+            constellations: {
+              lineStyle: {
+                stroke: ['#ddd'],
+                opacity: 0.8,
+                width: 1,
+              },
+            },
+            background: {
+              stroke: 'transparent',
+              width: 0,
+            },
+          },
+        },
+        {
+          celestialParams: {
+            stars: {
+              limit: 5.2,
+              size: 5,
+              style: {
+                fill: '#111',
+              },
+            },
+            constellations: {
+              lineStyle: {
+                stroke: '#111',
+                opacity: 0.8,
+                width: 1,
+              },
+            },
+            background: {
+              stroke: '#111',
+              width: 1,
+            },
+          },
+        },
+        {
+          celestialParams: {
+            stars: {
+              limit: 5.2,
+              size: 5,
+              style: {
+                fill: '#fff',
+              },
+            },
+            constellations: {
+              lineStyle: {
+                stroke: ['#ddd'],
+                opacity: 0.8,
+                width: 1,
+              },
+            },
+            background: {
+              stroke: 'transparent',
+              width: 0,
+            },
+          },
+        },
+      ],
+
+      printConfig: {
+        linesWidth: 5,
+        bgStrokeWidth: 5,
+        starsSize: 30,
       },
     };
   },

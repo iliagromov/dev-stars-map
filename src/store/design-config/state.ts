@@ -20,6 +20,10 @@ export interface DesignConfigStateInterface {
 
     /** Конфигурация карты звездного неба */
     celestial: Partial<CelestialConfig>;
+
+    colorScheme: object[];
+
+    printConfig: object;
   };
 
   svg: {
@@ -38,6 +42,8 @@ function state(): DesignConfigStateInterface {
       shiftX: null,
       shiftY: null,
       celestial: null,
+      colorScheme: null,
+      printConfig: null,
     },
     svg: {
       bloburl: null,
