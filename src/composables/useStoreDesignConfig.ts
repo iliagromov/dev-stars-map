@@ -13,6 +13,10 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/setDefaultStars');
   };
 
+  /** export config */
+  const config = computed(
+    () => store.state.designConfig.stars,
+  );
   /** Готовый blob file */
   const svgBlobUrl = computed(
     () => store.state.designConfig.svg.bloburl,
@@ -353,6 +357,7 @@ export default function useStoreDesignConfig() {
   };
 
   return {
+    config,
     setDefaults,
     setDefaultLayoutField,
     unsetDefaultLayoutField,

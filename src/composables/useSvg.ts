@@ -46,8 +46,6 @@ export default function useSvg() {
       const outerSVG = xml + svg.documentElement.outerHTML;
       const blob = new Blob([outerSVG], { type: 'image/svg+xml' });
       const href = window.URL.createObjectURL(blob);
-      // eslint-disable-next-line no-console
-      console.log(blob);
       await setSvgBlobUrl(href);
     }
   };
