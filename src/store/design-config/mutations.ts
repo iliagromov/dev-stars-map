@@ -18,6 +18,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
         zoomextend: 10,
         interactive: false,
         controls: false,
+        container: 'celestial-map',
         datapath: '/vendor/d3-celestial/data/',
         stars: {
           show: false,
@@ -32,7 +33,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
           designationType: 'name',
           designationStyle: {
             fill: '#fff',
-            font: `60px ${FONTS_LIST[2]}`,
+            font: `20px ${FONTS_LIST[2]}`,
             align: 'left',
             baseline: 'top',
           },

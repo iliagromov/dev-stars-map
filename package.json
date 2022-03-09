@@ -2,7 +2,7 @@
   "name": "pichshop-starmap",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "productName": "PichShop StarMap",
   "author": "Dmitry Sivachenko <dmitrisivachenko@gmail.com>",
   "private": true,
   "scripts": {

@@ -24,11 +24,3 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
-
-
-
-- p/s. если у нас 2 сердца то картинка применяется одна, Нужно это пофиксить
-
-- Подгрузка шрифтов
-- Название звезд могут обрезаться
-- export конфига
