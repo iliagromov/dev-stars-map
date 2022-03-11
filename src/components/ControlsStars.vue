@@ -51,6 +51,40 @@ q-card
           type="number"
         )
 
+      .col-4
+        q-input(
+          v-model="modelCelestialMapBackgroundStyleFill"
+          debounce="500"
+          label="Фон неба"
+        )
+          template(v-slot:append)
+                q-icon(
+                  name="colorize"
+                  class="cursor-pointer"
+                )
+                  q-popup-proxy(
+                    transition-show="scale"
+                    transition-hide="scale"
+                    cover
+                  )
+                    q-color(v-model="modelCelestialMapBackgroundStyleFill")
+      .col-4
+        q-input(
+          v-model="modelStarsCelestialMapLineStyleFill"
+          debounce="500"
+          label="Цвет линий"
+        )
+          template(v-slot:append)
+                q-icon(
+                  name="colorize"
+                  class="cursor-pointer"
+                )
+                  q-popup-proxy(
+                    transition-show="scale"
+                    transition-hide="scale"
+                    cover
+                  )
+                    q-color(v-model="modelStarsCelestialMapLineStyleFill")
       .col-12
         .q-pt-md.flex.items-center
           .text-overline.text-uppercase.text-blue-grey-5 Звезды

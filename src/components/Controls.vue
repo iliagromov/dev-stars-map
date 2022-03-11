@@ -13,7 +13,6 @@
       group="controls"
       icon="image"
       label="Фоновый слой"
-      default-opened
     )
       controls-background
 

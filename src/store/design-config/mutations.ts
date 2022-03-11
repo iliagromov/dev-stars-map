@@ -18,6 +18,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
         zoomextend: 10,
         interactive: false,
         controls: false,
+        container: 'celestial-map',
         datapath: '/vendor/d3-celestial/data/',
         stars: {
           show: false,
@@ -32,7 +33,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
           designationType: 'name',
           designationStyle: {
             fill: '#fff',
-            font: `60px ${FONTS_LIST[2]}`,
+            font: `20px ${FONTS_LIST[2]}`,
             align: 'left',
             baseline: 'top',
           },
@@ -54,9 +55,8 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
         constellations: {
           names: false,
           lineStyle: {
-            stroke: '#fff',
+            stroke: '#f20000',
             width: 1,
-            opacity: 1,
           },
         },
         mw: {
@@ -80,7 +80,9 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
           },
         },
         background: {
-          fill: '#000',
+          stroke: 'transparent',
+          fill: '#111111',
+          width: 0,
         },
       },
       colorScheme: [
@@ -147,6 +149,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
             background: {
               stroke: '#111',
               width: 1,
+              color: 'linear-gradient(180deg, #1d2e66 0%, #3a55ac 100%);',
             },
           },
         },
@@ -226,34 +229,6 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
     state.layoutFieldsText[payload.id].styles.font = payload.styles.font;
   },
 
-  /*
-  setTextEditor(state, payload: LayoutFieldText) {
-    // state.textEditor.innerText = payload;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    state.layoutFieldsText[payload.id].innerText = payload.innerText;
-  },
-
-  setLayoutFieldTextFont(state, payload: LayoutFieldText) {
-    state.layoutFieldsText[payload.id].styles.font = payload.styles.font;
-  },
-
-  setLayoutFieldTextSize(state, payload: LayoutFieldText) {
-    state.layoutFieldsText[payload.id].styles.size = payload.styles.size;
-  },
-
-  setLayoutFieldTextColor(state, payload: string) {
-    state.textEditor.styles.color = payload;
-  },
-
-  setLayoutFieldTextTransformX(state, payload: number) {
-    state.textEditor.styles.transformX = payload;
-  },
-
-  setLayoutFieldTextTransformY(state, payload: number) {
-    state.textEditor.styles.transformY = payload;
-  },
-  */
-
   unsetBackgroundFilename(state) {
     state.background.filename = null;
   },
@@ -300,6 +275,13 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
 
   setCelestialStarsStyleFill(state, payload: CelestialConfig['stars']['style']['fill']) {
     state.stars.celestial.stars.style.fill = payload;
+  },
+
+  setCelestialMapBackgroundStyleFill(state, payload: CelestialConfig['background']['fill']) {
+    state.stars.celestial.background.fill = payload;
+  },
+  setCelestialMapLineStyleFill(state, payload: CelestialConfig['constellations']['lineStyle']['stroke']) {
+    state.stars.celestial.constellations.lineStyle.stroke = payload;
   },
 
   setCelestialStarsStyleOpacity(state, payload: CelestialConfig['stars']['style']['opacity']) {
