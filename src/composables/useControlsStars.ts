@@ -48,6 +48,11 @@ export default function useProduct(/* productId */) {
     setStarsCelestialStarsDesignationFontSize,
     starsCelestialStarsDesignationFontPosition,
     setStarsCelestialStarsDesignationFontPosition,
+
+    starsCelestialMapBackgroundStyleFill,
+    setCelestialMapBackgroundStyleFill,
+    starsCelestialMapLineStyleFill,
+    setCelestialMapLineStyleFill,
   } = useStoreDesignConfig();
 
   /** Сдвиг по оси X */
@@ -159,6 +164,24 @@ export default function useProduct(/* productId */) {
   });
 
   watch(modelCelestialStarsStyleFill, setStarsCelestialStarsStyleFill);
+
+  /** Фон неба */
+  const modelCelestialMapBackgroundStyleFill = ref<CelestialConfig['background']['fill']>(null);
+
+  watch(starsCelestialMapBackgroundStyleFill, (value: CelestialConfig['background']['fill']) => {
+    modelCelestialMapBackgroundStyleFill.value = value;
+  });
+
+  watch(modelCelestialMapBackgroundStyleFill, setCelestialMapBackgroundStyleFill);
+
+  /** Цвет линий */
+  const modelStarsCelestialMapLineStyleFill = ref<CelestialConfig['constellations']['lineStyle']['stroke']>(null);
+
+  watch(starsCelestialMapLineStyleFill, (value: CelestialConfig['constellations']['lineStyle']['stroke']) => {
+    modelStarsCelestialMapLineStyleFill.value = value;
+  });
+
+  watch(modelStarsCelestialMapLineStyleFill, setCelestialMapLineStyleFill);
 
   /** Прозрачность звезд */
   const modelCelestialStarsStyleOpacity = ref<CelestialConfig['stars']['style']['opacity']>(null);
@@ -331,6 +354,8 @@ export default function useProduct(/* productId */) {
     modelCelestialStarsShow,
     modelCelestialStarsLimit,
     modelCelestialStarsColors,
+    modelCelestialMapBackgroundStyleFill,
+    modelStarsCelestialMapLineStyleFill,
     modelCelestialStarsStyleFill,
     modelCelestialStarsStyleOpacity,
     modelCelestialStarsSize,

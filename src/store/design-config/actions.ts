@@ -92,6 +92,14 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setCelestialStarsStyleFill', payload);
   },
 
+  setCelestialMapBackgroundStyleFill({ commit }, payload: CelestialConfig['background']['fill']) {
+    commit('setCelestialMapBackgroundStyleFill', payload);
+  },
+
+  setCelestialMapLineStyleFill({ commit }, payload: CelestialConfig['constellations']['lineStyle']['stroke']) {
+    commit('setCelestialMapLineStyleFill', payload);
+  },
+
   setCelestialStarsStyleOpacity(
     { commit },
     payload: CelestialConfig['stars']['style']['opacity'],

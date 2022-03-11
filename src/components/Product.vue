@@ -61,7 +61,7 @@ export default defineComponent({
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #000;
+    // background: #000;
   }
 
   &__bg {

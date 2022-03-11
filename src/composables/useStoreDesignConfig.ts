@@ -231,6 +231,30 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/setCelestialStarsStyleFill', value);
   };
 
+  /** Карта: Фон: Заливка (цвет) */
+  const starsCelestialMapBackgroundStyleFill = computed(
+    () => store.state.designConfig.stars.celestial?.background.fill,
+  );
+
+  /** Установка цвета звезд */
+  const setCelestialMapBackgroundStyleFill = async (
+    value: CelestialConfig['background']['fill'],
+  ) => {
+    await store.dispatch('designConfig/setCelestialMapBackgroundStyleFill', value);
+  };
+
+  /** Звезды: Линии: Заливка (цвет) */
+  const starsCelestialMapLineStyleFill = computed(
+    () => store.state.designConfig.stars.celestial?.constellations.lineStyle.stroke,
+  );
+
+  /** Установка цвета линии звезд */
+  const setCelestialMapLineStyleFill = async (
+    value: CelestialConfig['constellations']['lineStyle']['stroke'],
+  ) => {
+    await store.dispatch('designConfig/setCelestialMapLineStyleFill', value);
+  };
+
   /** Звезды: Стиль звезд: Прозрачность */
   const starsCelestialStarsStyleOpacity = computed(
     () => store.state.designConfig.stars.celestial?.stars.style.opacity,
@@ -422,5 +446,10 @@ export default function useStoreDesignConfig() {
     setStarsCelestialStarsDesignationFontSize,
     starsCelestialStarsDesignationFontPosition,
     setStarsCelestialStarsDesignationFontPosition,
+
+    starsCelestialMapBackgroundStyleFill,
+    setCelestialMapBackgroundStyleFill,
+    starsCelestialMapLineStyleFill,
+    setCelestialMapLineStyleFill,
   };
 }
