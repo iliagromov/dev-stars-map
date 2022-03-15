@@ -254,6 +254,22 @@ export default function useStoreDesignConfig() {
   ) => {
     await store.dispatch('designConfig/setCelestialMapLineStyleFill', value);
   };
+  /** Схема заднего фона */
+  const starsColorsScheme = computed(
+    () => store.state.designConfig.colorsScheme,
+  );
+
+  /** Активный задний фон */
+  const starsColorsSchemeActive = computed(
+    () => store.state.designConfig.activeColorScheme,
+  );
+
+  /** Установка заднего фона */
+  const setColorSchemeBlack = async (
+    value: number,
+  ) => {
+    await store.dispatch('designConfig/setColorSchemeBlack', value);
+  };
 
   /** Звезды: Стиль звезд: Прозрачность */
   const starsCelestialStarsStyleOpacity = computed(
@@ -451,5 +467,9 @@ export default function useStoreDesignConfig() {
     setCelestialMapBackgroundStyleFill,
     starsCelestialMapLineStyleFill,
     setCelestialMapLineStyleFill,
+
+    starsColorsScheme,
+    starsColorsSchemeActive,
+    setColorSchemeBlack,
   };
 }

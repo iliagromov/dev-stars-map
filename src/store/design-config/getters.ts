@@ -7,6 +7,10 @@ const getters: GetterTree<DesignConfigStateInterface, StateInterface> = {
     return background.filename;
   },
 
+  colorSchemeBlack({ colorsScheme }) {
+    return colorsScheme;
+  },
+
   layoutFields({ layoutFieldsText }) {
     return layoutFieldsText;
   },

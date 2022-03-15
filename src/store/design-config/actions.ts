@@ -100,6 +100,10 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setCelestialMapLineStyleFill', payload);
   },
 
+  setColorSchemeBlack({ commit }, payload: number) {
+    commit('setColorSchemeBlack', payload);
+  },
+
   setCelestialStarsStyleOpacity(
     { commit },
     payload: CelestialConfig['stars']['style']['opacity'],
