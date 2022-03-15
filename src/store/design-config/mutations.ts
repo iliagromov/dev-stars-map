@@ -1,6 +1,6 @@
 import { CelestialConfig } from 'd3-celestial/celestial';
 import { MutationTree } from 'vuex';
-import { FONTS_LIST } from 'src/config';
+import { COLORS_SCHEME, FONTS_LIST } from 'src/config';
 import { DesignConfigStateInterface } from './state';
 import { LayoutFieldText } from '../../types';
 
@@ -85,97 +85,6 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
           width: 0,
         },
       },
-      colorScheme: [
-        {
-          celestialParams: {
-            stars: {
-              limit: 5.2,
-              size: 5,
-              style: {
-                fill: '#fff',
-              },
-            },
-            constellations: {
-              lineStyle: {
-                stroke: ['#ddd'],
-                opacity: 0.8,
-                width: 1,
-              },
-            },
-            background: {
-              stroke: 'transparent',
-              width: 0,
-            },
-          },
-        },
-        {
-          celestialParams: {
-            stars: {
-              limit: 5.2,
-              size: 5,
-              style: {
-                fill: '#fff',
-              },
-            },
-            constellations: {
-              lineStyle: {
-                stroke: ['#ddd'],
-                opacity: 0.8,
-                width: 1,
-              },
-            },
-            background: {
-              stroke: 'transparent',
-              width: 0,
-            },
-          },
-        },
-        {
-          celestialParams: {
-            stars: {
-              limit: 5.2,
-              size: 5,
-              style: {
-                fill: '#111',
-              },
-            },
-            constellations: {
-              lineStyle: {
-                stroke: '#111',
-                opacity: 0.8,
-                width: 1,
-              },
-            },
-            background: {
-              stroke: '#111',
-              width: 1,
-              color: 'linear-gradient(180deg, #1d2e66 0%, #3a55ac 100%);',
-            },
-          },
-        },
-        {
-          celestialParams: {
-            stars: {
-              limit: 5.2,
-              size: 5,
-              style: {
-                fill: '#fff',
-              },
-            },
-            constellations: {
-              lineStyle: {
-                stroke: ['#ddd'],
-                opacity: 0.8,
-                width: 1,
-              },
-            },
-            background: {
-              stroke: 'transparent',
-              width: 0,
-            },
-          },
-        },
-      ],
 
       printConfig: {
         linesWidth: 5,
@@ -196,6 +105,14 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
       },
     });
   },
+  setColorSchemeBlack(state, payload: number) {
+    state.activeColorScheme = payload;
+    state.stars.celestial.background.fill = state.colorsScheme[payload].background.fill;
+    state.stars.celestial.stars.style.fill = state.colorsScheme[payload].stars.style.fill;
+    // eslint-disable-next-line max-len
+    state.stars.celestial.constellations.lineStyle.stroke = COLORS_SCHEME[payload].constellations.lineStyle.stroke;
+  },
+
   unsetDefaultLayoutField(state) {
     state.layoutFieldsText.pop();
   },

@@ -9,3 +9,25 @@ export type LayoutFieldText = {
   }
 }
 export type LayoutFieldsText = LayoutFieldText[]
+
+export type ColorScheme = {
+  id: number,
+  label: string,
+  color: string,
+  stars: {
+    style: {
+      fill: string;
+    }
+  },
+  constellations: {
+    lineStyle: {
+      stroke: string;
+    }
+  },
+  background: {
+    stroke: string;
+    fill: string;
+  },
+}
+
+export type ColorsScheme = ColorScheme[]

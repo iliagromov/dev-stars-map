@@ -1,5 +1,6 @@
 import { CelestialConfig } from 'd3-celestial/celestial';
-import { LayoutFieldsText } from '../../types';
+import { COLORS_SCHEME } from 'src/config';
+import { LayoutFieldsText, ColorsScheme } from '../../types';
 
 export interface DesignConfigStateInterface {
   /** Параметры слоя фона-трафарета */
@@ -21,10 +22,10 @@ export interface DesignConfigStateInterface {
     /** Конфигурация карты звездного неба */
     celestial: Partial<CelestialConfig>;
 
-    colorScheme: object[];
-
     printConfig: object;
   };
+  colorsScheme: ColorsScheme,
+  activeColorScheme: number,
 
   svg: {
     /** Blob URL готового svg файла */
@@ -42,9 +43,10 @@ function state(): DesignConfigStateInterface {
       shiftX: null,
       shiftY: null,
       celestial: null,
-      colorScheme: null,
       printConfig: null,
     },
+    colorsScheme: COLORS_SCHEME,
+    activeColorScheme: 0,
     svg: {
       bloburl: null,
     },

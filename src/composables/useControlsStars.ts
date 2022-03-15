@@ -53,6 +53,10 @@ export default function useProduct(/* productId */) {
     setCelestialMapBackgroundStyleFill,
     starsCelestialMapLineStyleFill,
     setCelestialMapLineStyleFill,
+
+    starsColorsScheme,
+    starsColorsSchemeActive,
+    setColorSchemeBlack,
   } = useStoreDesignConfig();
 
   /** Сдвиг по оси X */
@@ -182,6 +186,15 @@ export default function useProduct(/* productId */) {
   });
 
   watch(modelStarsCelestialMapLineStyleFill, setCelestialMapLineStyleFill);
+
+  /** Backgrounds */
+  const modelStarsCelestialMapColorSchemeStyleFill = ref<number>(0);
+
+  watch(starsColorsSchemeActive, (value: number) => {
+    modelStarsCelestialMapColorSchemeStyleFill.value = value;
+  });
+
+  watch(modelStarsCelestialMapColorSchemeStyleFill, setColorSchemeBlack);
 
   /** Прозрачность звезд */
   const modelCelestialStarsStyleOpacity = ref<CelestialConfig['stars']['style']['opacity']>(null);
@@ -369,5 +382,7 @@ export default function useProduct(/* productId */) {
     modelCelestialStarsDesignationStyleFontSize,
     modelCelestialStarsDesignationStylePosition,
     optionsCelestialStarsDesignationStylePosition,
+    modelStarsCelestialMapColorSchemeStyleFill,
+    starsColorsScheme,
   };
 }
