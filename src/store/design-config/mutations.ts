@@ -54,6 +54,7 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
         },
         constellations: {
           names: false,
+          lines: false,
           lineStyle: {
             stroke: '#f20000',
             width: 1,
@@ -176,6 +177,10 @@ const mutation: MutationTree<DesignConfigStateInterface> = {
 
   setCelestialZoomextend(state, payload: CelestialConfig['zoomextend']) {
     state.stars.celestial.zoomextend = payload;
+  },
+
+  setCelestialLinesShow(state, payload: CelestialConfig['constellations']['lines']) {
+    state.stars.celestial.constellations.lines = payload;
   },
 
   setCelestialStarsShow(state, payload: CelestialConfig['stars']['show']) {

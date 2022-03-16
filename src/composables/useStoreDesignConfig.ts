@@ -174,6 +174,16 @@ export default function useStoreDesignConfig() {
     await store.dispatch('designConfig/setCelestialZoomlevel', value);
   };
 
+  /** Созвездия */
+  const starsCelestialLinesShow = computed(
+    () => store.state.designConfig.stars.celestial?.constellations.lines,
+  );
+
+  /** Вкл/выкл созвездий */
+  const setCelestialLinesShow = async (value: CelestialConfig['constellations']['lines']) => {
+    await store.dispatch('designConfig/setCelestialLinesShow', value);
+  };
+
   /** Звезды */
   const starsCelestialStarsShow = computed(
     () => store.state.designConfig.stars.celestial?.stars.show,
@@ -435,6 +445,10 @@ export default function useStoreDesignConfig() {
     setStarsCelestialZoomlevel,
     starsCelestialStarsShow,
     setStarsCelestialStarsShow,
+
+    starsCelestialLinesShow,
+    setCelestialLinesShow,
+
     starsCelestialStarsLimit,
     setStarsCelestialStarsLimit,
     starsCelestialStarsSize,

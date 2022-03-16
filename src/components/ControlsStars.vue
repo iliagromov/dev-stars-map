@@ -69,6 +69,25 @@ q-card
                   )
                     q-color(v-model="modelCelestialMapBackgroundStyleFill")
       .col-4
+
+      .col-12
+        .q-gutter-sm
+          template(v-for="(field, index) in starsColorsScheme"
+            :key="field.id"
+          )
+            q-radio(
+              keep-color
+              v-model="modelStarsCelestialMapColorSchemeStyleFill"
+              :label="field.label"
+              :color="field.color"
+              :val="field.id"
+            )
+      .col-12
+        .q-pt-md.flex.items-center
+          .text-overline.text-uppercase.text-blue-grey-5 Созвездия
+          q-checkbox(v-model="modelCelestialLineShow")
+
+      template(v-if="modelCelestialLineShow")
         q-input(
           v-model="modelStarsCelestialMapLineStyleFill"
           debounce="500"
@@ -85,18 +104,6 @@ q-card
                     cover
                   )
                     q-color(v-model="modelStarsCelestialMapLineStyleFill")
-      .col-12
-        .q-gutter-sm
-          template(v-for="(field, index) in starsColorsScheme"
-            :key="field.id"
-          )
-            q-radio(
-              keep-color
-              v-model="modelStarsCelestialMapColorSchemeStyleFill"
-              :label="field.label"
-              :color="field.color"
-              :val="field.id"
-            )
       .col-12
         .q-pt-md.flex.items-center
           .text-overline.text-uppercase.text-blue-grey-5 Звезды

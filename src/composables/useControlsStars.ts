@@ -57,6 +57,9 @@ export default function useProduct(/* productId */) {
     starsColorsScheme,
     starsColorsSchemeActive,
     setColorSchemeBlack,
+
+    starsCelestialLinesShow,
+    setCelestialLinesShow,
   } = useStoreDesignConfig();
 
   /** Сдвиг по оси X */
@@ -132,6 +135,15 @@ export default function useProduct(/* productId */) {
   });
 
   watch(modelCelestialZoomlevel, setStarsCelestialZoomlevel);
+
+  /** Звезды (вкл/выкл) */
+  const modelCelestialLineShow = ref<CelestialConfig['constellations']['lines']>(null);
+
+  watch(starsCelestialLinesShow, (value: CelestialConfig['constellations']['lines']) => {
+    modelCelestialLineShow.value = value;
+  });
+
+  watch(modelCelestialLineShow, setCelestialLinesShow);
 
   /** Звезды (вкл/выкл) */
   const modelCelestialStarsShow = ref<CelestialConfig['stars']['show']>(null);
@@ -384,5 +396,6 @@ export default function useProduct(/* productId */) {
     optionsCelestialStarsDesignationStylePosition,
     modelStarsCelestialMapColorSchemeStyleFill,
     starsColorsScheme,
+    modelCelestialLineShow,
   };
 }
