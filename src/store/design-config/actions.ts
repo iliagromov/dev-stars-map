@@ -76,6 +76,10 @@ const actions: ActionTree<DesignConfigStateInterface, StateInterface> = {
     commit('setCelestialZoomextend', payload);
   },
 
+  setCelestialLinesShow({ commit }, payload: CelestialConfig['constellations']['lines']) {
+    commit('setCelestialLinesShow', payload);
+  },
+
   setCelestialStarsShow({ commit }, payload: CelestialConfig['stars']['show']) {
     commit('setCelestialStarsShow', payload);
   },

@@ -63,6 +63,10 @@ const getters: GetterTree<DesignConfigStateInterface, StateInterface> = {
     return stars.celestial?.zoomextend;
   },
 
+  celestialLinesShow({ stars }) {
+    return stars.celestial?.constellations?.lines;
+  },
+
   celestialStarsShow({ stars }) {
     return stars.celestial?.stars?.show;
   },
